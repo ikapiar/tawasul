@@ -17,9 +17,14 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
 
-// Initialize Firebase
-// Check if the API key is provided before initializing
-const app = firebaseConfig.apiKey && !getApps().length ? initializeApp(firebaseConfig) : getApp();
+// Initialize Firebase for client-side
+let app;
+if (getApps().length === 0) {
+  app = initializeApp(firebaseConfig);
+} else {
+  app = getApp();
+}
+
 const auth = getAuth(app);
 const db = getFirestore(app);
 
