@@ -128,4 +128,10 @@ export default {
       error_title: 'Error',
     },
   },
+  theme: {
+    toggle: 'Toggle theme',
+    light: 'Light',
+    dark: 'Dark',
+    system: 'System',
+  }
 } as const;

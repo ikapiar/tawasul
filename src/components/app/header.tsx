@@ -1,4 +1,5 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Header({ title, description }: { title: string, description: string }) {
   return (
@@ -11,6 +12,9 @@ export function Header({ title, description }: { title: string, description: str
           <h1 className="text-2xl font-bold font-headline text-primary">{title}</h1>
           <p className="text-sm text-muted-foreground">{description}</p>
         </div>
+      </div>
+      <div className="flex items-center gap-2">
+        <ThemeToggle />
       </div>
     </header>
   );

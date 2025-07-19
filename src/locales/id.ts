@@ -128,4 +128,10 @@ export default {
       error_title: 'Kesalahan',
     },
   },
+  theme: {
+    toggle: 'Ganti tema',
+    light: 'Terang',
+    dark: 'Gelap',
+    system: 'Sistem',
+  }
 } as const;

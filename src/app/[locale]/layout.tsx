@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import './../globals.css';
 import { I18nProviderClient } from '@/locales/client';
 import type { Locale } from '@/locales/server';
+import { ThemeProvider } from '@/components/app/theme-provider';
 
 export const metadata: Metadata = {
   title: 'ikapiar Connect',
@@ -25,10 +26,16 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <I18nProviderClient locale={locale}>
-          {children}
-          <Toaster />
-        </I18nProviderClient>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+          <I18nProviderClient locale={locale}>
+            {children}
+            <Toaster />
+          </I18nProviderClient>
+        </ThemeProvider>
       </body>
     </html>
   );
