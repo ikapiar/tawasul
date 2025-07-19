@@ -10,6 +10,7 @@ import { MentorshipBoard } from '@/components/app/mentorship-board';
 import { EventCalendar } from '@/components/app/event-calendar';
 import { DirectMessaging } from '@/components/app/direct-messaging';
 import { SmartMatching } from '@/components/app/smart-matching';
+import { Profile } from '@/components/app/profile';
 import { Header } from '@/components/app/header';
 import { useI18n } from '@/locales/client';
 import type { ScopedT } from '@/locales/server';
@@ -26,6 +27,7 @@ export default function ConnectPage() {
     events: { title: t('home.views.titles.events'), description: t('home.views.descriptions.events') },
     messages: { title: t('home.views.titles.messages'), description: t('home.views.descriptions.messages') },
     match: { title: t('home.views.titles.match'), description: t('home.views.descriptions.match') },
+    profile: { title: t('home.views.titles.profile'), description: t('home.views.descriptions.profile') },
   }), [t]);
 
   const { title, description } = useMemo(() => viewConfig[activeView], [activeView, viewConfig]);
@@ -39,6 +41,7 @@ export default function ConnectPage() {
       case 'events': return <EventCalendar />;
       case 'messages': return <DirectMessaging />;
       case 'match': return <SmartMatching />;
+      case 'profile': return <Profile />;
       default: return <Dashboard />;
     }
   };

@@ -9,6 +9,7 @@ import {
   Calendar,
   MessageSquare,
   Sparkles,
+  UserCircle,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -17,12 +18,15 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  SidebarFooter,
+  SidebarSeparator,
 } from '@/components/ui/sidebar';
 import { IkapiarLogo } from './ikapiar-logo';
 import { useI18n } from '@/locales/client';
 import type { ScopedT } from '@/locales/server';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
-export type View = 'dashboard' | 'alumni' | 'jobs' | 'mentorship' | 'events' | 'messages' | 'match';
+export type View = 'dashboard' | 'alumni' | 'jobs' | 'mentorship' | 'events' | 'messages' | 'match' | 'profile';
 
 interface SidebarNavProps {
   activeView: View;
@@ -41,6 +45,8 @@ export function SidebarNav({ activeView, setActiveView }: SidebarNavProps) {
     { id: 'messages', label: t('sidebar.nav.messages'), icon: MessageSquare },
     { id: 'match', label: t('sidebar.nav.smart_match'), icon: Sparkles },
   ];
+
+  const profileItem = { id: 'profile', label: t('sidebar.nav.my_profile'), icon: UserCircle };
 
   return (
     <Sidebar>
@@ -69,6 +75,28 @@ export function SidebarNav({ activeView, setActiveView }: SidebarNavProps) {
           ))}
         </SidebarMenu>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarSeparator />
+        <SidebarMenu>
+          <SidebarMenuItem>
+             <SidebarMenuButton
+                onClick={() => setActiveView(profileItem.id as View)}
+                isActive={activeView === profileItem.id}
+                tooltip={{ children: profileItem.label, side: 'right' }}
+                className="justify-start"
+              >
+                <Avatar className="w-8 h-8">
+                  <AvatarImage src="https://placehold.co/100x100.png" alt="Your Name" />
+                  <AvatarFallback>U</AvatarFallback>
+                </Avatar>
+                <div className="group-data-[collapsible=icon]:hidden flex flex-col items-start">
+                   <span className="font-semibold">Your Name</span>
+                   <span className="text-xs text-muted-foreground">{profileItem.label}</span>
+                </div>
+              </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }

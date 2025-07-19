@@ -8,6 +8,7 @@ export default {
       events: 'Events',
       messages: 'Messages',
       smart_match: 'Smart Match',
+      my_profile: 'My Profile',
     },
   },
   home: {
@@ -20,6 +21,7 @@ export default {
         events: 'Events',
         messages: 'Messages',
         match: 'Smart Matching',
+        profile: 'My Profile',
       },
       descriptions: {
         dashboard: 'Welcome to your ikapiar Connect dashboard.',
@@ -29,6 +31,7 @@ export default {
         events: 'Upcoming networking events and reunions.',
         messages: 'Your private conversations.',
         match: 'Get AI-powered alumni connection suggestions.',
+        profile: 'View and manage your public profile.',
       },
     },
   },
@@ -127,6 +130,12 @@ export default {
       title: 'Suggested Connections',
       error_title: 'Error',
     },
+  },
+  profile: {
+    edit_button: 'Edit Profile',
+    about_me: 'About Me',
+    skills: 'Skills',
+    contact: 'Contact Information',
   },
   theme: {
     toggle: 'Toggle theme',

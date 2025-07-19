@@ -8,6 +8,7 @@ export default {
       events: 'Acara',
       messages: 'Pesan',
       smart_match: 'Smart Match',
+      my_profile: 'Profil Saya',
     },
   },
   home: {
@@ -20,6 +21,7 @@ export default {
         events: 'Acara',
         messages: 'Pesan',
         match: 'Smart Matching',
+        profile: 'Profil Saya',
       },
       descriptions: {
         dashboard: 'Selamat datang di dasbor ikapiar Connect Anda.',
@@ -29,6 +31,7 @@ export default {
         events: 'Acara jaringan dan reuni yang akan datang.',
         messages: 'Percakapan pribadi Anda.',
         match: 'Dapatkan saran koneksi alumni bertenaga AI.',
+        profile: 'Lihat dan kelola profil publik Anda.',
       },
     },
   },
@@ -127,6 +130,12 @@ export default {
       title: 'Saran Koneksi',
       error_title: 'Kesalahan',
     },
+  },
+  profile: {
+    edit_button: 'Ubah Profil',
+    about_me: 'Tentang Saya',
+    skills: 'Keahlian',
+    contact: 'Informasi Kontak',
   },
   theme: {
     toggle: 'Ganti tema',
