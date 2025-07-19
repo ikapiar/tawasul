@@ -11,21 +11,24 @@ import { EventCalendar } from '@/components/app/event-calendar';
 import { DirectMessaging } from '@/components/app/direct-messaging';
 import { SmartMatching } from '@/components/app/smart-matching';
 import { Header } from '@/components/app/header';
-
-const viewConfig = {
-  dashboard: { title: 'Dashboard', description: 'Welcome to your ikapiar Connect dashboard.' },
-  alumni: { title: 'Alumni Directory', description: 'Search and connect with alumni.' },
-  jobs: { title: 'Job Board', description: 'Find job and internship opportunities.' },
-  mentorship: { title: 'Mentorship Board', description: 'Find a mentor to guide you.' },
-  events: { title: 'Events', description: 'Upcoming networking events and reunions.' },
-  messages: { title: 'Messages', description: 'Your private conversations.' },
-  match: { title: 'Smart Matching', description: 'Get AI-powered alumni connection suggestions.' },
-};
+import { useI18n } from '@/locales/client';
+import type { ScopedT } from '@/locales/server';
 
 export default function Home() {
   const [activeView, setActiveView] = useState<View>('dashboard');
+  const t = useI18n();
 
-  const { title, description } = useMemo(() => viewConfig[activeView], [activeView]);
+  const viewConfig: Record<View, { title: ScopedT<'home.views.titles'>, description: ScopedT<'home.views.descriptions'> }> = useMemo(() => ({
+    dashboard: { title: t('home.views.titles.dashboard'), description: t('home.views.descriptions.dashboard') },
+    alumni: { title: t('home.views.titles.alumni'), description: t('home.views.descriptions.alumni') },
+    jobs: { title: t('home.views.titles.jobs'), description: t('home.views.descriptions.jobs') },
+    mentorship: { title: t('home.views.titles.mentorship'), description: t('home.views.descriptions.mentorship') },
+    events: { title: t('home.views.titles.events'), description: t('home.views.descriptions.events') },
+    messages: { title: t('home.views.titles.messages'), description: t('home.views.descriptions.messages') },
+    match: { title: t('home.views.titles.match'), description: t('home.views.descriptions.match') },
+  }), [t]);
+
+  const { title, description } = useMemo(() => viewConfig[activeView], [activeView, viewConfig]);
 
   const renderContent = () => {
     switch (activeView) {
