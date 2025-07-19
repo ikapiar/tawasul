@@ -4,6 +4,13 @@ import type { NextRequest } from 'next/server';
 const I18nMiddleware = createI18nMiddleware({
   locales: ['en', 'id'],
   defaultLocale: 'en',
+  resolveLocaleFromRequest: request => {
+    const country = request.geo?.country;
+    if (country === 'ID') {
+      return 'id';
+    }
+    return 'en';
+  }
 });
 
 export function middleware(request: NextRequest) {
