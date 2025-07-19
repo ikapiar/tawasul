@@ -1,3 +1,5 @@
+'use client';
+
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
@@ -6,15 +8,17 @@ import { Badge } from "@/components/ui/badge";
 import { messageData, chatHistory } from "@/lib/data";
 import { Send, Search } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useI18n } from "@/locales/client";
 
 export function DirectMessaging() {
+  const t = useI18n();
   return (
     <Card className="h-[calc(100vh-10rem)] flex">
       <div className="w-1/3 border-r flex flex-col">
         <CardHeader>
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Search messages..." className="pl-8" />
+            <Input placeholder={t('messages.search_placeholder')} className="pl-8" />
           </div>
         </CardHeader>
         <ScrollArea className="flex-1">
@@ -51,7 +55,7 @@ export function DirectMessaging() {
               </Avatar>
               <div>
                 <p className="font-semibold text-lg font-headline">{messageData[1].name}</p>
-                <p className="text-sm text-muted-foreground">Online</p>
+                <p className="text-sm text-muted-foreground">{t('messages.status_online')}</p>
               </div>
            </div>
         </CardHeader>
@@ -69,7 +73,7 @@ export function DirectMessaging() {
         </ScrollArea>
         <div className="p-4 border-t">
           <div className="relative">
-            <Input placeholder="Type a message..." className="pr-12 text-base" />
+            <Input placeholder={t('messages.type_message_placeholder')} className="pr-12 text-base" />
             <Button size="icon" className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8">
               <Send className="h-4 w-4" />
             </Button>

@@ -95,3 +95,9 @@ export const chatHistory = [
     { sender: 'other', text: "Also, I was wondering if you'd be open to reviewing my resume?" },
     { sender: 'me', text: "Great question. Let's find a time to chat about product management. And of course, happy to help with your resume! Send it over." },
 ];
+
+// NOTE: The 'posted' field in jobData contains relative time strings.
+// A robust implementation would calculate these dynamically based on a timestamp.
+// For this example, we'll keep them as static strings and will not localize them.
+// The same applies to eventData titles and descriptions and chatHistory,
+// as they represent dynamic user-generated content.

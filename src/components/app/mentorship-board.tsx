@@ -1,28 +1,33 @@
+'use client';
+
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { mentorshipData } from "@/lib/data";
+import { useI18n } from "@/locales/client";
 
 export function MentorshipBoard() {
+  const t = useI18n();
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-headline">Find a Mentor</CardTitle>
+        <CardTitle className="font-headline">{t('mentorship.title')}</CardTitle>
         <CardDescription>
-          Connect with experienced alumni who are open to mentoring.
+          {t('mentorship.description')}
         </CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Mentor</TableHead>
-              <TableHead>Expertise</TableHead>
-              <TableHead className="hidden md:table-cell">Current Role</TableHead>
-              <TableHead className="text-center hidden sm:table-cell">Availability</TableHead>
-              <TableHead className="text-right">Action</TableHead>
+              <TableHead>{t('mentorship.table.mentor')}</TableHead>
+              <TableHead>{t('mentorship.table.expertise')}</TableHead>
+              <TableHead className="hidden md:table-cell">{t('mentorship.table.current_role')}</TableHead>
+              <TableHead className="text-center hidden sm:table-cell">{t('mentorship.table.availability')}</TableHead>
+              <TableHead className="text-right">{t('mentorship.table.action')}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -48,11 +53,11 @@ export function MentorshipBoard() {
                     variant={mentor.availability === 'Available' ? 'default' : 'secondary'}
                     className={mentor.availability === 'Available' ? 'bg-accent text-accent-foreground' : ''}
                   >
-                    {mentor.availability}
+                    {t(`mentorship.availabilities.${mentor.availability.toLowerCase() as 'available' | 'limited' | 'unavailable'}`)}
                   </Badge>
                 </TableCell>
                 <TableCell className="text-right">
-                  <Button size="sm">Request</Button>
+                  <Button size="sm">{t('mentorship.request_button')}</Button>
                 </TableCell>
               </TableRow>
             ))}

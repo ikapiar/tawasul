@@ -1,10 +1,15 @@
+'use client';
+
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Calendar } from "@/components/ui/calendar";
 import { Badge } from "@/components/ui/badge";
 import { eventData, eventDays, eventDayStyle } from "@/lib/data";
 import { format } from "date-fns";
+import { useI18n } from "@/locales/client";
 
 export function EventCalendar() {
+  const t = useI18n();
+
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       <div className="lg:col-span-1">
@@ -21,7 +26,7 @@ export function EventCalendar() {
         </Card>
       </div>
       <div className="lg:col-span-2 space-y-4">
-        <h3 className="text-2xl font-headline font-bold">Upcoming Events</h3>
+        <h3 className="text-2xl font-headline font-bold">{t('events.upcoming_events')}</h3>
         {eventData.map(event => (
           <Card key={event.id}>
             <CardHeader>

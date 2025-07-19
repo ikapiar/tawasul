@@ -8,9 +8,11 @@ import { Input } from "@/components/ui/input";
 import { alumniData } from "@/lib/data";
 import type { Alumni } from "@/lib/data";
 import { Search, MessageSquare } from 'lucide-react';
+import { useI18n } from '@/locales/client';
 
 export function AlumniDirectory() {
   const [searchTerm, setSearchTerm] = useState('');
+  const t = useI18n();
 
   const filteredAlumni = alumniData.filter(alumni =>
     alumni.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -24,7 +26,7 @@ export function AlumniDirectory() {
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
         <Input
-          placeholder="Search by name, major, job, or skill..."
+          placeholder={t('alumni.search_placeholder')}
           className="pl-10 text-base"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -40,7 +42,7 @@ export function AlumniDirectory() {
                 <AvatarFallback>{alumni.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <CardTitle className="font-headline text-xl">{alumni.name}</CardTitle>
-              <CardDescription>Class of {alumni.graduationYear}</CardDescription>
+              <CardDescription>{t('alumni.class_of')} {alumni.graduationYear}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow flex flex-col justify-between">
               <div className="space-y-2">
@@ -55,7 +57,7 @@ export function AlumniDirectory() {
                   ))}
                 </div>
                 <Button className="w-full">
-                  <MessageSquare className="mr-2 h-4 w-4" /> Connect
+                  <MessageSquare className="mr-2 h-4 w-4" /> {t('alumni.connect_button')}
                 </Button>
               </div>
             </CardContent>

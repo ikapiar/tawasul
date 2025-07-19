@@ -14,6 +14,7 @@ import { Loader2, Sparkles, MessageSquare } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Badge } from '../ui/badge';
+import { useI18n } from '@/locales/client';
 
 const formSchema = z.object({
   studentProfile: z.string().min(50, {
@@ -25,6 +26,7 @@ export function SmartMatching() {
   const [suggestions, setSuggestions] = useState<SuggestAlumniConnectionsOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const t = useI18n();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -53,9 +55,9 @@ export function SmartMatching() {
       <div className="lg:col-span-1">
         <Card>
           <CardHeader>
-            <CardTitle className="font-headline">Find Your Connection</CardTitle>
+            <CardTitle className="font-headline">{t('match.title')}</CardTitle>
             <CardDescription>
-              Describe your academic interests, career aspirations, and hobbies. Our AI will find alumni with similar paths.
+              {t('match.description')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -66,10 +68,10 @@ export function SmartMatching() {
                   name="studentProfile"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Your Profile</FormLabel>
+                      <FormLabel>{t('match.form.profile_label')}</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="e.g., 'I'm a junior passionate about renewable energy and data analysis. I'm looking for advice on breaking into the green tech industry and would love to connect with professionals in that field. I'm also part of the debate club and enjoy hiking.'"
+                          placeholder={t('match.form.profile_placeholder')}
                           rows={10}
                           {...field}
                         />
@@ -82,11 +84,11 @@ export function SmartMatching() {
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Generating...
+                      {t('match.form.generating_button')}
                     </>
                   ) : (
                     <>
-                     <Sparkles className="mr-2 h-4 w-4" /> Get Suggestions
+                     <Sparkles className="mr-2 h-4 w-4" /> {t('match.form.submit_button')}
                     </>
                   )}
                 </Button>
@@ -97,7 +99,7 @@ export function SmartMatching() {
       </div>
 
       <div className="lg:col-span-2">
-        <h3 className="text-2xl font-headline font-bold mb-4">Suggested Connections</h3>
+        <h3 className="text-2xl font-headline font-bold mb-4">{t('match.suggestions.title')}</h3>
         {isLoading && (
           <div className="grid gap-6 md:grid-cols-2">
             {[...Array(2)].map((_, i) => (
@@ -117,7 +119,7 @@ export function SmartMatching() {
         )}
         {error && (
           <Alert variant="destructive">
-            <AlertTitle>Error</AlertTitle>
+            <AlertTitle>{t('match.suggestions.error_title')}</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
@@ -131,7 +133,7 @@ export function SmartMatching() {
                         <AvatarFallback>{alumni.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <CardTitle className="font-headline text-xl">{alumni.name}</CardTitle>
-                    <CardDescription>Class of {alumni.graduationYear}</CardDescription>
+                    <CardDescription>{t('alumni.class_of')} {alumni.graduationYear}</CardDescription>
                 </CardHeader>
                  <CardContent className="flex-grow flex flex-col justify-between">
                     <div>
@@ -142,7 +144,7 @@ export function SmartMatching() {
                         <p className="text-sm italic text-muted-foreground p-3 bg-secondary rounded-md">"{alumni.reason}"</p>
                     </div>
                     <Button className="w-full">
-                        <MessageSquare className="mr-2 h-4 w-4" /> Connect
+                        <MessageSquare className="mr-2 h-4 w-4" /> {t('alumni.connect_button')}
                     </Button>
                 </CardContent>
               </Card>
