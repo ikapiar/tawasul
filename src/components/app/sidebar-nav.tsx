@@ -10,6 +10,7 @@ import {
   MessageSquare,
   Sparkles,
   UserCircle,
+  LogOut,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -25,6 +26,11 @@ import { IkapiarLogo } from './ikapiar-logo';
 import { useI18n } from '@/locales/client';
 import type { ScopedT } from '@/locales/server';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/lib/firebase/client';
+import { signOut } from '@/lib/auth';
+import { useRouter } from 'next/navigation';
+import { Button } from '../ui/button';
 
 export type View = 'dashboard' | 'alumni' | 'jobs' | 'mentorship' | 'events' | 'messages' | 'match' | 'profile';
 
@@ -35,6 +41,13 @@ interface SidebarNavProps {
 
 export function SidebarNav({ activeView, setActiveView }: SidebarNavProps) {
   const t = useI18n();
+  const [user] = useAuthState(auth);
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await signOut();
+    router.push('/');
+  };
 
   const navItems: { id: View; label: ScopedT<'sidebar.nav'>; icon: React.ElementType }[] = [
     { id: 'dashboard', label: t('sidebar.nav.dashboard'), icon: LayoutGrid },
@@ -77,6 +90,10 @@ export function SidebarNav({ activeView, setActiveView }: SidebarNavProps) {
       </SidebarContent>
       <SidebarFooter>
         <SidebarSeparator />
+         <Button variant="ghost" className="w-full justify-start group-data-[collapsible=icon]:justify-center" onClick={handleSignOut}>
+            <LogOut className="h-5 w-5" />
+            <span className="group-data-[collapsible=icon]:hidden ml-2">{t('landing.nav.logout')}</span>
+        </Button>
         <SidebarMenu>
           <SidebarMenuItem>
              <SidebarMenuButton
@@ -86,11 +103,11 @@ export function SidebarNav({ activeView, setActiveView }: SidebarNavProps) {
                 className="justify-start"
               >
                 <Avatar className="w-8 h-8">
-                  <AvatarImage src="https://placehold.co/100x100.png" alt="Your Name" />
-                  <AvatarFallback>U</AvatarFallback>
+                  <AvatarImage src={user?.photoURL ?? undefined} alt={user?.displayName ?? 'User'} />
+                  <AvatarFallback>{user?.displayName?.charAt(0) ?? 'U'}</AvatarFallback>
                 </Avatar>
                 <div className="group-data-[collapsible=icon]:hidden flex flex-col items-start">
-                   <span className="font-semibold">Your Name</span>
+                   <span className="font-semibold">{user?.displayName ?? 'User'}</span>
                    <span className="text-xs text-muted-foreground">{profileItem.label}</span>
                 </div>
               </SidebarMenuButton>

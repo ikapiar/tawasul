@@ -2,15 +2,26 @@
 import { IkapiarLogo } from '@/components/app/ikapiar-logo';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useI18n } from '@/locales/client';
+import { useI18n, useCurrentLocale } from '@/locales/client';
 import Image from 'next/image';
 import { ThemeToggle } from '@/components/app/theme-toggle';
-import { Twitter, Linkedin, Instagram } from 'lucide-react';
-import { useCurrentLocale } from '@/locales/client';
+import { Twitter, Linkedin, Instagram, LogIn } from 'lucide-react';
+import { signInWithGoogle, signOut } from '@/lib/auth';
+import { auth } from '@/lib/firebase/client';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function LandingPage() {
   const t = useI18n();
   const locale = useCurrentLocale();
+  const [user, loading, error] = useAuthState(auth);
+
+  const handleSignIn = async () => {
+    await signInWithGoogle();
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -27,9 +38,19 @@ export default function LandingPage() {
           </nav>
           <div className="flex flex-1 items-center justify-end gap-2">
              <ThemeToggle />
-            <Button asChild>
-              <Link href={`/${locale}/connect`}>{t('landing.nav.login')}</Link>
-            </Button>
+             {user ? (
+                <>
+                  <Button asChild>
+                    <Link href={`/${locale}/connect`}>{t('landing.nav.dashboard')}</Link>
+                  </Button>
+                  <Button variant="outline" onClick={handleSignOut}>{t('landing.nav.logout')}</Button>
+                </>
+             ) : (
+                <Button onClick={handleSignIn} disabled={loading}>
+                  <LogIn className="mr-2 h-4 w-4" />
+                  {loading ? t('landing.nav.logging_in') : t('landing.nav.login')}
+                </Button>
+             )}
           </div>
         </div>
       </header>
@@ -44,9 +65,15 @@ export default function LandingPage() {
               <p className="text-lg text-muted-foreground">
                 {t('landing.hero.subtitle')}
               </p>
-              <Button size="lg" asChild>
-                <Link href={`/${locale}/connect`}>{t('landing.hero.cta')}</Link>
-              </Button>
+              {user ? (
+                 <Button size="lg" asChild>
+                    <Link href={`/${locale}/connect`}>{t('landing.hero.cta_signed_in')}</Link>
+                  </Button>
+              ) : (
+                <Button size="lg" onClick={handleSignIn} disabled={loading}>
+                  {loading ? t('landing.nav.logging_in') : t('landing.hero.cta')}
+                </Button>
+              )}
             </div>
           </div>
         </section>

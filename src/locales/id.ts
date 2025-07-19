@@ -146,12 +146,16 @@ export default {
   landing: {
     nav: {
       about: 'Tentang',
-      login: 'Masuk',
+      login: 'Masuk dengan Google',
+      logout: 'Keluar',
+      logging_in: 'Masuk...',
+      dashboard: 'Buka Dasbor'
     },
     hero: {
       title: 'Tetap Terhubung, Tumbuh Bersama',
       subtitle: 'Selamat datang di jaringan alumni resmi IKAPIAR. Terhubung kembali dengan rekan-rekan, perluas lingkaran profesional Anda, dan buka peluang baru.',
       cta: 'Gabung Ikapiar Connect',
+      cta_signed_in: 'Buka Dasbor Anda'
     },
     about: {
       title: 'Tentang IKAPIAR',

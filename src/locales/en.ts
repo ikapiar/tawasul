@@ -146,12 +146,16 @@ export default {
   landing: {
     nav: {
       about: 'About',
-      login: 'Login',
+      login: 'Login with Google',
+      logout: 'Logout',
+      logging_in: 'Logging in...',
+      dashboard: 'Go to Dashboard'
     },
     hero: {
       title: 'Stay Connected, Grow Together',
       subtitle: 'Welcome to the official IKAPIAR alumni network. Reconnect with peers, expand your professional circle, and unlock new opportunities.',
       cta: 'Join Ikapiar Connect',
+      cta_signed_in: 'Go to your Dashboard'
     },
     about: {
       title: 'About IKAPIAR',
