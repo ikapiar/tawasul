@@ -133,5 +133,25 @@ export default {
     light: 'Terang',
     dark: 'Gelap',
     system: 'Sistem',
-  }
+  },
+  landing: {
+    nav: {
+      about: 'Tentang',
+      login: 'Masuk',
+    },
+    hero: {
+      title: 'Tetap Terhubung, Tumbuh Bersama',
+      subtitle: 'Selamat datang di jaringan alumni resmi IKAPIAR. Terhubung kembali dengan rekan-rekan, perluas lingkaran profesional Anda, dan buka peluang baru.',
+      cta: 'Gabung Ikapiar Connect',
+    },
+    about: {
+      title: 'Tentang IKAPIAR',
+      paragraph1: 'IKAPIAR adalah organisasi resmi untuk para alumni, yang didedikasikan untuk membina komunitas seumur hidup di antara para lulusan. Kami bertujuan untuk mendukung anggota kami melalui jaringan profesional, program bimbingan, dan acara eksklusif.',
+      paragraph2: 'Misi kami adalah menciptakan jaringan yang kuat yang memberdayakan alumni untuk berhasil dalam karier mereka dan berkontribusi kembali kepada komunitas kami. Bergabunglah dengan kami untuk terhubung kembali, berbagi pengalaman, dan tumbuh bersama.',
+      image_alt: 'Sekelompok alumni di sebuah acara networking.',
+    },
+    footer: {
+      rights: 'Hak cipta dilindungi undang-undang.',
+    },
+  },
 } as const;

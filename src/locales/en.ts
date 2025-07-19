@@ -133,5 +133,25 @@ export default {
     light: 'Light',
     dark: 'Dark',
     system: 'System',
-  }
+  },
+  landing: {
+    nav: {
+      about: 'About',
+      login: 'Login',
+    },
+    hero: {
+      title: 'Stay Connected, Grow Together',
+      subtitle: 'Welcome to the official IKAPIAR alumni network. Reconnect with peers, expand your professional circle, and unlock new opportunities.',
+      cta: 'Join Ikapiar Connect',
+    },
+    about: {
+      title: 'About IKAPIAR',
+      paragraph1: 'IKAPIAR is the official organization for alumni, dedicated to fostering a lifelong community among graduates. We aim to support our members through professional networking, mentorship programs, and exclusive events.',
+      paragraph2: 'Our mission is to create a powerful network that empowers alumni to succeed in their careers and contribute back to our community. Join us to reconnect, share experiences, and grow together.',
+      image_alt: 'A group of alumni at a networking event.',
+    },
+    footer: {
+      rights: 'All rights reserved.',
+    },
+  },
 } as const;
