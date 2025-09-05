@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ikapiar Connect — Mentorship</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<header class="border-bottom bg-white">
+  <nav class="container navbar navbar-expand-lg">
+    <a class="navbar-brand fw-bold" href="./connect.html">IKAPIAR</a>
+    <div class="ms-auto d-flex gap-2">
+      <a class="btn btn-outline-secondary" href="./connect.html">Dasbor</a>
+      <button class="btn btn-danger" id="btnLogout" type="button">Keluar</button>
+    </div>
+  </nav>
+</header>
+
+<main class="container py-4">
+  <div id="alertHost"></div>
+  <div class="row g-3" id="mentors"></div>
+</main>
+
+<script src="./basepages.js"></script>
+<script>
+  BasePages.requireAuth();
+
+  function renderMentors(){
+    const wrap = document.getElementById('mentors');
+    wrap.innerHTML = '';
+    BasePages.mockStore.mentors.forEach((m, idx) => {
+      const col = document.createElement('div');
+      col.className = 'col-12 col-md-6 col-lg-4';
+      col.innerHTML = `
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title mb-1">${escapeHtml(m.name)}</h5>
+            <div class="text-secondary mb-2">Bidang: ${escapeHtml(m.field)}</div>
+            <div class="mb-3">Sisa slot: <span class="badge text-bg-${m.slots>0?'success':'secondary'}" id="slots-${idx}">${m.slots}</span></div>
+            <div class="d-grid">
+              <button class="btn btn-primary" type="button" ${m.slots>0?'':'disabled'} data-idx="${idx}">Minta Bimbingan</button>
+            </div>
+          </div>
+        </div>`;
+      wrap.appendChild(col);
+    });
+
+    // Attach click handlers
+    wrap.querySelectorAll('button[data-idx]').forEach(btn => {
+      btn.addEventListener('click', function(){
+        const i = Number(this.getAttribute('data-idx'));
+        const mentor = BasePages.mockStore.mentors[i];
+        if (!mentor) return;
+        if (mentor.slots > 0) {
+          mentor.slots -= 1;
+          document.getElementById('slots-' + i).textContent = mentor.slots;
+          if (mentor.slots === 0) this.setAttribute('disabled','true');
+          BasePages.showAlert(document.getElementById('alertHost'), 'Permintaan bimbingan dikirim (simulasi).', 'success');
+        } else {
+          BasePages.showAlert(document.getElementById('alertHost'), 'Slot mentor sudah penuh.', 'warning');
+        }
+      });
+    });
+  }
+
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
+  }
+
+  document.getElementById('btnLogout').addEventListener('click', () => BasePages.logout());
+
+  renderMentors();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

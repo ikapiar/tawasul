@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ikapiar Connect — Beranda</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<header class="border-bottom bg-white">
+  <nav class="container navbar navbar-expand-lg">
+    <a class="navbar-brand fw-bold" href="./index.html">IKAPIAR</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="./index.html">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="./about.html">Tentang</a></li>
+      </ul>
+      <div class="d-flex gap-2">
+        <a class="btn btn-primary" href="#" id="btnLogin">Masuk dengan Google</a>
+        <a class="btn btn-outline-secondary" href="./connect.html">Buka Dasbor</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="container py-5">
+  <div class="text-center mb-4">
+    <h1 class="display-5 fw-bold">Tetap Terhubung, Tumbuh Bersama</h1>
+    <p class="text-secondary">Selamat datang di jaringan alumni resmi IKAPIAR. Terhubung kembali, perluas jaringan profesional, dan temukan peluang baru.</p>
+    <div class="d-grid d-sm-inline-flex gap-2 mt-2">
+      <a class="btn btn-primary" href="#" id="btnLoginHero">Gabung via Google</a>
+      <a class="btn btn-outline-secondary" href="./connect.html">Lihat Dasbor</a>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Direktori Alumni</h5>
+          <p class="card-text">Cari alumni berdasarkan angkatan, jurusan, keahlian, dan lokasi.</p>
+          <a href="./directory.html" class="btn btn-sm btn-outline-primary">Buka</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Pesan Langsung</h5>
+          <p class="card-text">Kirim pesan pribadi untuk berjejaring dan kolaborasi.</p>
+          <a href="./messages.html" class="btn btn-sm btn-outline-primary">Buka</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Job Board</h5>
+          <p class="card-text">Jelajahi lowongan kerja dan magang dari komunitas.</p>
+          <a href="./jobs.html" class="btn btn-sm btn-outline-primary">Buka</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="border-top py-3 bg-light">
+  <div class="container d-flex justify-content-between small text-secondary">
+    <span>&copy; <span id="year"></span> IKAPIAR</span>
+    <a href="./about.html" class="link-secondary">Tentang</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="./basepages.js"></script>
+<script>
+  // Simulated login: stores a fake user then navigates to dashboard
+  const btnLogin = document.getElementById('btnLogin');
+  if (btnLogin) {
+    btnLogin.addEventListener('click', async function(e){
+      e.preventDefault();
+      await BasePages.fakeLogin();
+      window.location.href = './connect.html';
+    });
+  }
+  const btnLoginHero = document.getElementById('btnLoginHero');
+  if (btnLoginHero) {
+    btnLoginHero.addEventListener('click', async function(e){
+      e.preventDefault();
+      await BasePages.fakeLogin();
+      window.location.href = './connect.html';
+    });
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

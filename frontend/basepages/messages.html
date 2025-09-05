@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ikapiar Connect — Pesan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<header class="border-bottom bg-white">
+  <nav class="container navbar navbar-expand-lg">
+    <a class="navbar-brand fw-bold" href="./connect.html">IKAPIAR</a>
+    <div class="ms-auto d-flex gap-2">
+      <a class="btn btn-outline-secondary" href="./connect.html">Dasbor</a>
+      <button class="btn btn-danger" id="btnLogout" type="button">Keluar</button>
+    </div>
+  </nav>
+</header>
+
+<main class="container py-4">
+  <div id="alertHost"></div>
+
+  <div class="row g-3">
+    <div class="col-12 col-lg-8">
+      <div class="card h-100">
+        <div class="card-header">Percakapan</div>
+        <div class="card-body overflow-auto" id="msgList" aria-live="polite"></div>
+        <div class="card-footer">
+          <form id="msgForm" class="row g-2 align-items-center" autocomplete="off">
+            <div class="col-12 col-sm">
+              <input id="msgInput" type="text" class="form-control" placeholder="Tulis pesan..." aria-label="Tulis pesan">
+            </div>
+            <div class="col-12 col-sm-auto d-grid">
+              <button class="btn btn-primary" type="submit">Kirim</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="card h-100">
+        <div class="card-header">Kontak (Simulasi)</div>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item">Andi Pratama</div>
+          <div class="list-group-item">Budi Santoso</div>
+          <div class="list-group-item">Citra Lestari</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="./basepages.js"></script>
+<script>
+  BasePages.requireAuth();
+
+  function renderMessages(){
+    const host = document.getElementById('msgList');
+    host.innerHTML = '';
+    if (!BasePages.mockStore.messages.length) {
+      host.innerHTML = '<div class="text-secondary">Belum ada pesan. Mulai percakapan!</div>';
+      return;
+    }
+    BasePages.mockStore.messages.forEach(m => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'd-flex mb-2';
+      const bubble = document.createElement('div');
+      bubble.className = 'p-2 rounded-3 ' + (m.from === 'me' ? 'bg-primary text-white ms-auto' : 'bg-light');
+      bubble.innerHTML = `<div>${escapeHtml(m.text)}</div><div class="small opacity-75">${new Date(m.ts).toLocaleTimeString()}</div>`;
+      wrapper.appendChild(bubble);
+      host.appendChild(wrapper);
+    });
+    host.scrollTop = host.scrollHeight;
+  }
+
+  // Basic escape to avoid injecting HTML in our simple demo
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
+  }
+
+  document.getElementById('msgForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const input = document.getElementById('msgInput');
+    const text = (input.value || '').trim();
+    if (!text) return;
+    BasePages.mockStore.messages.push({ from: 'me', text, ts: Date.now() });
+    input.value = '';
+    renderMessages();
+  });
+
+  document.getElementById('btnLogout').addEventListener('click', () => BasePages.logout());
+
+  // initial render
+  renderMessages();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

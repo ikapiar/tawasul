@@ -1,0 +1,17 @@
+{
+  "name": "tawasul-backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "local": "bun run server.ts --env-file=.env"
+  },
+  "dependencies": {
+    "@elysiajs/static": "^1.3.0",
+    "elysia": "^1.3.21"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.21",
+    "@types/node": "^20",
+    "typescript": "^5"
+  }
+}
