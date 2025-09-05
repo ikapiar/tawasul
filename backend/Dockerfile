@@ -29,8 +29,8 @@ RUN bun build --compile --minify --sourcemap ./server.ts --outfile server
 FROM base AS release
 COPY --from=prerelease /usr/src/app/server .
 COPY --from=prerelease /usr/src/app/package.json .
+COPY static ./static
 
 # run the app
-USER bun
 EXPOSE 3000/tcp
 ENTRYPOINT [ "./server" ]

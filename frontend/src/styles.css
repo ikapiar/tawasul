@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary: #2E4A62; /* Navy */
+  --bg: #E5E8EA;      /* Light gray */
+  --accent: #50C878;  /* Emerald */
+}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #0f172a;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5 { font-family: 'Space Grotesk', Inter, Arial, sans-serif; }
+
+a { color: var(--primary); text-decoration: none; transition: color .2s ease; }
+a:hover { color: #203449; }
+
+header, footer { background: #ffffff; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+.btn { background: var(--primary); border: none; color: #fff; padding: 10px 16px; border-radius: 10px; cursor: pointer; transition: transform .12s ease, box-shadow .2s ease; }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.08); }
+.btn.secondary { background: #fff; color: #0f172a; border: 1px solid #cbd5e1; }
+
+.card { background: #fff; border-radius: 14px; padding: 16px; box-shadow: 0 2px 10px rgba(0,0,0,.06); transition: box-shadow .2s ease; }
+.card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+
+/* Spinner aligned with theme */
+.spinner {
+  width: 24px; height: 24px; border-radius: 50%; border: 3px solid rgba(46,74,98,.25); border-top-color: var(--primary);
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
