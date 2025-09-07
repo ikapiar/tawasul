@@ -1,5 +1,3 @@
-# Firebase Studio
+# Tawasul
 
-This is a NextJS starter in Firebase Studio.
-
-To get started, take a look at src/app/page.tsx.
+See [blueprint](./docs/blueprint.md) for core features and style guideline
