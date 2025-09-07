@@ -1,0 +1,17 @@
+{
+  "name": "tawasul-data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ikapiar/tawasul.git"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^24.3.1"
+  }
+}
