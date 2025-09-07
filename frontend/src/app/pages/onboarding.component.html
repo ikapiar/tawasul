@@ -1,0 +1,141 @@
+<div class="container" style="padding:24px 16px 64px">
+  <h2 class="mb-3">Selamat Datang — Onboarding</h2>
+
+  @if(!user()){ <div class="spinner" aria-label="Memuat..."></div> } @else {
+    <div class="card">
+      <div class="card-body">
+        @switch (step()) {
+          @case ('match') {
+            <h5 class="mb-2">Cek Data Alumni</h5>
+            <p class="text-secondary">Kami akan mencoba menemukan data alumni yang cocok berdasarkan nama atau email.</p>
+            <div class="row g-2 align-items-end mb-3">
+              <div class="col-12 col-md-8">
+                <label class="form-label">Kata kunci (nama atau email)</label>
+                <input class="form-control" [(ngModel)]="keyword" placeholder="contoh: {{user()?.name}} atau {{user()?.email}}"/>
+              </div>
+              <div class="col-12 col-md-4 d-grid">
+                <button class="btn" (click)="search()"><i class="bi bi-search me-1"></i>Cari</button>
+              </div>
+            </div>
+            @if(matches().length){
+              <div class="list-group mb-3">
+                @for (m of matches(); track m.googleEmail) {
+                  <button class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" (click)="choose(m)">
+                    <div>
+                      <div class="fw-semibold">{{m.namaLengkap}}</div>
+                      <div class="small text-secondary">Angkatan {{m.angkatan}} • {{m.googleEmail}}</div>
+                    </div>
+                    <span class="badge text-bg-secondary">Pilih</span>
+                  </button>
+                }
+              </div>
+            } @else {
+              <div class="text-secondary mb-3">Tidak ada kandidat pada pencarian terakhir.</div>
+            }
+            <div class="d-flex gap-2">
+              <button class="btn secondary" (click)="goManual()">Saya tidak ada dalam daftar — isi data manual</button>
+            </div>
+          }
+
+          @case ('verify') {
+            <h5 class="mb-2">Verifikasi Email</h5>
+            <p class="text-secondary">Kami menemukan kandidat berikut. Masukkan email alumni yang terdaftar untuk verifikasi.</p>
+            <div class="mb-3 p-2 rounded border">
+              <div class="fw-semibold">{{selected()?.namaLengkap}}</div>
+              <div class="small text-secondary">Angkatan {{selected()?.angkatan}}</div>
+            </div>
+            <div class="row g-2 align-items-end">
+              <div class="col-12 col-md-8">
+                <label class="form-label">Email alumni</label>
+                <input class="form-control" type="email" [(ngModel)]="verifyEmailInput" placeholder="nama@contoh.com"/>
+              </div>
+              <div class="col-12 col-md-4 d-grid">
+                <button class="btn" (click)="verify()">Kirim Verifikasi</button>
+              </div>
+            </div>
+            @if(errorMsg()){ <div class="alert alert-danger mt-3">{{errorMsg()}}</div> }
+            <div class="d-flex gap-2 mt-3">
+              <button class="btn secondary" (click)="goManual()">Bukan saya — isi data manual</button>
+              <button class="btn" (click)="backToSearch()">Kembali</button>
+            </div>
+          }
+
+          @case ('form') {
+            <h5 class="mb-2">Lengkapi Data Utama</h5>
+            @if(formError()){ <div class="alert alert-danger">{{formError()}}</div> }
+            <form [formGroup]="form" class="row g-3" novalidate>
+              <div class="col-12 col-md-6">
+                <label class="form-label">Email Google</label>
+                <input class="form-control" formControlName="googleEmail" [readonly]="true"/>
+                @if(form.get('googleEmail')?.touched && form.get('googleEmail')?.invalid){
+                  <div class="text-danger small mt-1">Email Google wajib dan harus valid.</div>
+                }
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label">Nama Lengkap</label>
+                <input class="form-control" formControlName="namaLengkap"/>
+                @if(form.get('namaLengkap')?.touched && form.get('namaLengkap')?.invalid){
+                  <div class="text-danger small mt-1">Nama Lengkap wajib diisi.</div>
+                }
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label">Angkatan</label>
+                <input class="form-control" formControlName="angkatan" list="angkatanOptions" placeholder="Cari & pilih angkatan"/>
+                <datalist id="angkatanOptions">
+                  @for (y of angkatanList(); track y) { <option [value]="y"></option> }
+                </datalist>
+                @if(form.get('angkatan')?.touched && form.get('angkatan')?.invalid){
+                  <div class="text-danger small mt-1">Pilih salah satu angkatan.</div>
+                }
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label">Nomor Kontak</label>
+                <input class="form-control" type="tel" inputmode="numeric" pattern="\\d*" formControlName="nomorKontak" placeholder="08xxxxxxxxxx"/>
+                @if(form.get('nomorKontak')?.touched && form.get('nomorKontak')?.invalid){
+                  <div class="text-danger small mt-1">
+                    @if(form.get('nomorKontak')?.errors?.['required']) { Nomor Kontak wajib diisi. }
+                    @else { Nomor Kontak harus berupa angka saja. }
+                  </div>
+                }
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label">Jurusan (opsional)</label>
+                <input class="form-control" formControlName="major"/>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label">Pekerjaan (opsional)</label>
+                <input class="form-control" formControlName="job"/>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Domisili (opsional)</label>
+                <input class="form-control" formControlName="domisili"/>
+              </div>
+              <div class="col-12 d-flex gap-2">
+                <button class="btn" type="button" (click)="proceed()">Lanjut</button>
+              </div>
+            </form>
+          }
+
+          @case ('confirm') {
+            <h5 class="mb-2">Konfirmasi Data</h5>
+            <div class="mb-3">
+              <div><strong>{{draft().namaLengkap}}</strong> • Angkatan {{draft().angkatan}}</div>
+              <div class="text-secondary small">Email: {{draft().googleEmail}} • Kontak: {{draft().nomorKontak}}</div>
+              @if(draft().major){<div class="small">Jurusan: {{draft().major}}</div>}
+              @if(draft().job){<div class="small">Pekerjaan: {{draft().job}}</div>}
+              @if(draft().domisili){<div class="small">Domisili: {{draft().domisili}}</div>}
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="ack" [(ngModel)]="ack"/>
+              <label for="ack" class="form-check-label">Saya memahami data akan direview oleh perwakilan angkatan.</label>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn" [disabled]="!ack" (click)="finalize()">Konfirmasi & Lanjutkan</button>
+              <button class="btn secondary" (click)="step.set('form')">Kembali</button>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  }
+</div>

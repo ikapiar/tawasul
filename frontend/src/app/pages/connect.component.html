@@ -1,0 +1,58 @@
+<header>
+  <div class="container" style="display:flex;align-items:center;gap:12px;justify-content:space-between;padding:12px 16px">
+    <a routerLink="/"><strong>IKAPIAR</strong></a>
+    <nav class="d-none d-md-block">
+      <a routerLink="/connect" class="me-3">Dasbor</a>
+      <a routerLink="/directory" class="me-3">Direktori</a>
+      <a routerLink="/jobs" class="me-3">Lowongan</a>
+      <a routerLink="/mentorship" class="me-3">Mentor</a>
+      <a routerLink="/events" class="me-3">Acara</a>
+      <a routerLink="/profile">Profil</a>
+    </nav>
+    <div>
+      <button class="btn secondary" (click)="logout()"><i class="bi bi-box-arrow-right me-1"></i>Keluar</button>
+    </div>
+  </div>
+</header>
+
+<main class="container" style="padding:24px 16px 64px">
+  @if(user()){
+    <div class="card mb-3">
+      <h2 style="margin:0 0 8px">Halo, {{user()?.name || 'Alumni'}} 👋</h2>
+      <p class="mb-0" style="color:#475569">Email: {{user()?.email || '-'}} </p>
+    </div>
+  } @else {
+    <div class="spinner" aria-label="Memuat..."></div>
+  }
+
+  <div class="row g-3">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card h-100">
+        <h3 class="mb-1"><i class="bi bi-people me-2 text-primary"></i>Direktori Alumni</h3>
+        <p class="mb-2">Temukan dan hubungi alumni.</p>
+        <a class="btn secondary" routerLink="/directory">Buka</a>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card h-100">
+        <h3 class="mb-1"><i class="bi bi-briefcase me-2 text-primary"></i>Job Board</h3>
+        <p class="mb-2">Lowongan kerja & magang.</p>
+        <a class="btn secondary" routerLink="/jobs">Buka</a>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card h-100">
+        <h3 class="mb-1"><i class="bi bi-mortarboard me-2 text-primary"></i>Mentorship</h3>
+        <p class="mb-2">Mulai bimbingan karier.</p>
+        <a class="btn secondary" routerLink="/mentorship">Buka</a>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card h-100">
+        <h3 class="mb-1"><i class="bi bi-calendar-event me-2 text-primary"></i>Kalender Acara</h3>
+        <p class="mb-2">Networking & reuni.</p>
+        <a class="btn secondary" routerLink="/events">Buka</a>
+      </div>
+    </div>
+  </div>
+</main>

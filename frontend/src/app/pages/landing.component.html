@@ -1,0 +1,37 @@
+<header>
+  <div class="container" style="display:flex;align-items:center;gap:12px;justify-content:space-between;padding:12px 16px">
+    <strong class="fs-4" style="font-family:'Space Grotesk', Inter, Arial, sans-serif">IKAPIAR</strong>
+    <nav class="d-none d-sm-block">
+      <a routerLink="/" class="me-3">Beranda</a>
+      <a href="#about">Tentang</a>
+    </nav>
+    <div>
+      @if(!user()){
+        <button class="btn" (click)="login()"><i class="bi bi-google me-1"></i>Masuk dengan Google</button>
+      } @else {
+        <a class="btn" routerLink="/connect"><i class="bi bi-speedometer2 me-1"></i>Buka Dasbor</a>
+      }
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="container" style="padding:64px 16px; text-align:center">
+    <h1 style="font-size:42px;margin:0 0 8px;font-family:'Space Grotesk',Inter,Arial,sans-serif">Tetap Terhubung, Tumbuh Bersama</h1>
+    <p style="color:#475569;margin:0 0 16px">Selamat datang di jaringan alumni resmi IKAPIAR. Terhubung kembali dengan rekan-rekan, perluas lingkaran profesional Anda, dan buka peluang baru.</p>
+    <a class="btn" routerLink="/connect">Buka Dasbor</a>
+  </section>
+
+  <section id="about" class="container" style="padding:24px 16px 64px">
+    <div class="card">
+      <h2 style="margin-top:0">Tentang IKAPIAR</h2>
+      <p>IKAPIAR adalah organisasi resmi untuk para alumni, yang didedikasikan untuk membina komunitas seumur hidup di antara para lulusan. Kami mendukung anggota melalui jaringan profesional, program bimbingan, dan acara eksklusif.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container" style="padding:16px;display:flex;justify-content:space-between">
+    <span>&copy; {{year}} IKAPIAR. Hak cipta dilindungi undang-undang.</span>
+  </div>
+</footer>

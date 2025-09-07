@@ -5,7 +5,6 @@
 - Landing Page (public): Landing page with a clean, modern design.
 - About Us (public): About us page with a clean, modern design.
 - Alumni Directory: Searchable alumni directory with detailed profiles (name, graduation year, major, current job, skills, contact info).
-- Direct Messaging: Private messaging system for direct communication between students and alumni.
 - Job Board: Job board where alumni can post job and internship opportunities.
 - Mentorship Board: Mentorship board where alumni can offer mentorship and students can find mentors.
 - Event Calendar: Event calendar displaying networking events, webinars, and school reunions.

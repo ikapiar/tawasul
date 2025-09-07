@@ -1,0 +1,42 @@
+<div class="container" style="padding:24px 16px 64px">
+  <h2 class="mb-3">Kalender Acara</h2>
+  <div class="row g-3">
+    <div class="col-12 col-lg-6">
+      <div class="card h-100">
+        <h3 class="mb-2"><i class="bi bi-calendar-event me-2"></i>Daftar Acara</h3>
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead class="table-light"><tr><th>Nama Acara</th><th>Tanggal</th><th>Tempat</th></tr></thead>
+            <tbody>
+              @for (e of events(); track e.name) {
+                <tr><td>{{e.name}}</td><td>{{e.date}}</td><td>{{e.place}}</td></tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="card h-100">
+        <h3 class="mb-2"><i class="bi bi-plus-square me-2"></i>Tambah Acara</h3>
+        <form [formGroup]="form" (ngSubmit)="submit()" class="row g-3">
+          <div class="col-12">
+            <label class="form-label">Nama Acara</label>
+            <input class="form-control" formControlName="name" placeholder="Contoh: Webinar Karier"/>
+          </div>
+          <div class="col-12 col-sm-6">
+            <label class="form-label">Tanggal</label>
+            <input class="form-control" type="date" formControlName="date"/>
+          </div>
+          <div class="col-12 col-sm-6">
+            <label class="form-label">Tempat</label>
+            <input class="form-control" formControlName="place" placeholder="Online / Lokasi"/>
+          </div>
+          <div class="col-12">
+            <button class="btn" type="submit"><i class="bi bi-check2 me-1"></i>Tambahkan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

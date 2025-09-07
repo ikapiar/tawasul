@@ -1,0 +1,14 @@
+<div class="container" style="padding:24px 16px 64px">
+  <h2 class="mb-3">Profil Saya</h2>
+  @if(user()){
+    <div class="card d-flex align-items-center gap-3 p-3">
+      <img [src]="user()?.picture || 'https://via.placeholder.com/96?text=' + (user()?.name || 'U')[0]" width="96" height="96" class="rounded-circle border" alt="Avatar" />
+      <div>
+        <h5 class="mb-1">{{user()?.name || 'Alumni'}}</h5>
+        <div class="text-secondary">{{user()?.email || '-'}} </div>
+      </div>
+    </div>
+  } @else {
+    <div class="spinner" aria-label="Memuat..."></div>
+  }
+</div>

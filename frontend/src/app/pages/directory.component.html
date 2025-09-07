@@ -1,0 +1,33 @@
+<div class="container" style="padding:24px 16px 64px">
+  <h2 class="mb-3">Direktori Alumni</h2>
+  <div class="d-flex gap-2 mb-3">
+    <input [(ngModel)]="q" class="form-control" placeholder="Cari nama, angkatan, jurusan, skill..." />
+    <button class="btn" (click)="search()"><i class="bi bi-search me-1"></i>Cari</button>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Nama</th><th>Angkatan</th><th>Jurusan</th><th>Pekerjaan</th><th>Keahlian</th><th>Kontak</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (a of rows(); track a.googleEmail) {
+          <tr>
+            <td>{{a.namaLengkap}}</td>
+            <td>{{a.angkatan}}</td>
+            <td>{{a.major}}</td>
+            <td>{{a.job}}</td>
+            <td>
+              @for (s of (a.skills || []); track s) {
+                <span class="badge text-bg-secondary me-1">{{s}}</span>
+              }
+            </td>
+            <td><a class="btn secondary" [href]="'mailto:'+a.googleEmail">Email</a></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

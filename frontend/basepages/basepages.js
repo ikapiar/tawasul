@@ -77,9 +77,6 @@ const mockStore = {
   events: [
     { name: 'Webinar: Karier di Tech', date: '2025-09-20', place: 'Online' },
     { name: 'Reuni Akbar', date: '2025-12-05', place: 'Aula Kampus' }
-  ],
-  messages: [
-    // { from: 'me', text: 'Halo!', ts: Date.now() }
   ]
 };
 

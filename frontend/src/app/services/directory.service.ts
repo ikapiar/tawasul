@@ -2,36 +2,43 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
+// Updated Alumni type based on onboarding requirements
 export interface Alumni {
-  name: string;
-  year: number;
-  major: string;
-  job: string;
-  skills: string[];
-  contact: string;
+  googleEmail: string; // required
+  namaLengkap: string; // required
+  angkatan: string; // required (named cohort)
+  nomorKontak: string; // required
+  major?: string;
+  job?: string;
+  skills?: string[];
+  domisili?: string;
 }
 
-const DATA: Alumni[] = [
-  { name: 'Andi Pratama', year: 2018, major: 'Teknik Informatika', job: 'Frontend Engineer', skills: ['Angular','Bootstrap'], contact: 'andi@example.com' },
-  { name: 'Budi Santoso', year: 2016, major: 'Sistem Informasi', job: 'Product Manager', skills: ['Leadership','Roadmapping'], contact: 'budi@example.com' },
-  { name: 'Citra Lestari', year: 2020, major: 'Teknik Industri', job: 'Data Analyst', skills: ['SQL','Python'], contact: 'citra@example.com' }
+const BASE_DATA: Alumni[] = [
+  { namaLengkap: 'Andi Pratama', angkatan: 'Rais', major: 'Teknik Informatika', job: 'Frontend Engineer', skills: ['Angular','Bootstrap'], googleEmail: 'andi@example.com', nomorKontak: '081234567890' },
+  { namaLengkap: 'Budi Santoso', angkatan: 'Radar', major: 'Sistem Informasi', job: 'Product Manager', skills: ['Leadership','Roadmapping'], googleEmail: 'budi@example.com', nomorKontak: '081298765432' },
+  { namaLengkap: 'Citra Lestari', angkatan: 'Sahabat', major: 'Teknik Industri', job: 'Data Analyst', skills: ['SQL','Python'], googleEmail: 'citra@example.com', nomorKontak: '081233344455' }
 ];
+const extras: Alumni[] = [];
 
 @Injectable({ providedIn: 'root' })
 export class DirectoryService {
   list$(query?: string): Observable<Alumni[]> {
-    const base$ = of(DATA).pipe(delay(200));
+    const base$ = of([...BASE_DATA, ...extras]).pipe(delay(200));
     if (!query) return base$;
     const k = query.toLowerCase();
     return base$.pipe(
       map(rows => rows.filter(r =>
-        r.name.toLowerCase().includes(k) ||
-        String(r.year).includes(k) ||
-        r.major.toLowerCase().includes(k) ||
-        r.job.toLowerCase().includes(k) ||
-        r.skills.join(',').toLowerCase().includes(k) ||
-        r.contact.toLowerCase().includes(k)
+        r.namaLengkap.toLowerCase().includes(k) ||
+        String(r.angkatan).toLowerCase().includes(k) ||
+        (r.major || '').toLowerCase().includes(k) ||
+        (r.job || '').toLowerCase().includes(k) ||
+        (r.skills || []).join(',').toLowerCase().includes(k) ||
+        r.googleEmail.toLowerCase().includes(k)
       ))
     );
+  }
+  add(a: Alumni): Observable<Alumni> {
+    return of(a).pipe(delay(200), map(v => { extras.push(v); return v; }));
   }
 }

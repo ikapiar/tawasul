@@ -1,0 +1,84 @@
+/* IKAPIAR Connect — Lightweight Theme (matches docs/blueprint.md)
+   - Primary: #2E4A62 (navy)
+   - Background: #E5E8EA (light gray)
+   - Accent: #50C878 (emerald)
+   Keep it minimal to stay fast; only small overrides on top of Bootstrap.
+*/
+:root{
+  --ik-primary: #2E4A62;
+  --ik-bg: #E5E8EA;
+  --ik-accent: #50C878;
+  --ik-text: #1f2937; /* neutral dark */
+}
+
+html, body { height: 100%; }
+body{
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background-color: var(--ik-bg);
+  color: var(--ik-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand{
+  font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: -0.01em;
+  color: var(--ik-primary);
+}
+
+/* Subtle elevation and rounding for cards */
+.card{
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+.card-header{
+  border-bottom: none;
+  background: #f6f8fa;
+  color: var(--ik-primary);
+  font-weight: 600;
+}
+
+/* Buttons in brand colors */
+.btn-primary{
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--ik-primary);
+  --bs-btn-border-color: var(--ik-primary);
+  --bs-btn-hover-bg: #23394b; /* darken primary */
+  --bs-btn-hover-border-color: #23394b;
+  --bs-btn-focus-shadow-rgb: 80,200,120; /* accent glow */
+}
+.btn-outline-primary{
+  --bs-btn-color: var(--ik-primary);
+  --bs-btn-border-color: var(--ik-primary);
+  --bs-btn-hover-bg: var(--ik-primary);
+  --bs-btn-hover-border-color: var(--ik-primary);
+  --bs-btn-hover-color: #fff;
+}
+.btn-outline-secondary{
+  --bs-btn-hover-bg: #f1f5f9;
+}
+
+/* Links */
+a{ color: var(--ik-primary); }
+a:hover{ color: #23394b; }
+
+/* Navbar */
+header.bg-white{ background-color: #fff !important; }
+.navbar-brand{ font-weight: 700; }
+
+/* Tables */
+.table > :not(caption) > * > *{ padding: 0.85rem 1rem; }
+
+/* Badges and alerts aligned to palette */
+.badge.text-bg-success{ background-color: var(--ik-accent) !important; }
+.alert-info{ color: var(--ik-primary); }
+
+/* Subtle transitions for polish */
+.btn, a, .card{
+  transition: color .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.card:hover{ transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+
+/* Footer */
+footer.bg-light{ background-color: #eef1f3 !important; }

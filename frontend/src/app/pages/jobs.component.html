@@ -1,0 +1,53 @@
+<div class="container" style="padding:24px 16px 64px">
+  <h2 class="mb-3">Job Board</h2>
+  <div class="row g-3">
+    <div class="col-12 col-lg-6">
+      <div class="card h-100">
+        <h3 class="mb-2"><i class="bi bi-list-task me-2"></i>Daftar Lowongan</h3>
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead class="table-light">
+              <tr><th>Posisi</th><th>Perusahaan</th><th>Lokasi</th><th>Tipe</th></tr>
+            </thead>
+            <tbody>
+              @for (j of jobs(); track j.title) {
+                <tr><td>{{j.title}}</td><td>{{j.company}}</td><td>{{j.location}}</td><td>{{j.type}}</td></tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="card h-100">
+        <h3 class="mb-2"><i class="bi bi-plus-square me-2"></i>Tambah Lowongan</h3>
+        <form [formGroup]="form" (ngSubmit)="submit()" class="row g-3">
+          <div class="col-12">
+            <label class="form-label">Posisi</label>
+            <input class="form-control" formControlName="title" placeholder="Contoh: Software Engineer"/>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Perusahaan</label>
+            <input class="form-control" formControlName="company" placeholder="Contoh: PT Maju Jaya"/>
+          </div>
+          <div class="col-12 col-sm-6">
+            <label class="form-label">Lokasi</label>
+            <input class="form-control" formControlName="location" placeholder="Kota"/>
+          </div>
+          <div class="col-12 col-sm-6">
+            <label class="form-label">Tipe</label>
+            <select class="form-select" formControlName="type">
+              <option>Full-time</option>
+              <option>Part-time</option>
+              <option>Internship</option>
+              <option>Contract</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <button class="btn" type="submit"><i class="bi bi-check2 me-1"></i>Tambahkan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container" style="padding:24px 16px 64px">
+  <h2 class="mb-3">Mentorship</h2>
+  <div class="row g-3">
+    @for (m of mentors(); track m.id) {
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100">
+          <h5 class="mb-1">{{m.name}}</h5>
+          <div class="text-secondary mb-2">Bidang: {{m.field}}</div>
+          <div class="mb-3">Sisa slot: <span class="badge text-bg-{{m.slots>0?'success':'secondary'}}">{{m.slots}}</span></div>
+          <div class="d-grid">
+            <button class="btn" [disabled]="m.slots===0" (click)="request(m.id)"><i class="bi bi-send me-1"></i>Minta Bimbingan</button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
