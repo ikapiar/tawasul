@@ -5,7 +5,6 @@ import {GoogleClient} from "./clients/GoogleClient";
 import {UserService} from "./services/UserService";
 import {USER_JWT_COOKIE_NAME} from "./constants";
 import {db} from "./db";
-import {userTable} from "./db/schemas";
 
 const prefix = '/api/v1'
 

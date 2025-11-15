@@ -1,7 +1,7 @@
-import {integer, pgEnum, pgTable, serial, text, varchar} from "drizzle-orm/pg-core";
+import {integer, pgEnum, pgTable, serial, varchar} from "drizzle-orm/pg-core";
 import {relations} from "drizzle-orm";
 import {angkatanTable} from "./angkatan";
-import {Genders, UserStatuses} from "../../constants";
+import {Genders} from "../../constants";
 
 export const genderEnum = pgEnum('gender_enum', Genders)
 
