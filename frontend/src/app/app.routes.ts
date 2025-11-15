@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import {DashboardGuard} from './core/guards/DashboardGuard';
 
 export const routes: Routes = [
   {
@@ -11,6 +12,7 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./features/dashboard/dashboard.routes').then(m => m.DashboardRoutes)
+    loadChildren: () => import('./features/dashboard/dashboard.routes').then(m => m.DashboardRoutes),
+    canActivate: [DashboardGuard]
   }
 ];

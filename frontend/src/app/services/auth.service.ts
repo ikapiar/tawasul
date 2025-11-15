@@ -6,11 +6,12 @@ import {Observable} from 'rxjs';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>("/api/v1/login", {email, password})
+  currentUserInfo(): Observable<AuthorizedUser> {
+    return this.http.get<AuthorizedUser>("/api/v1/auth/me")
   }
 }
 
-export type LoginResponse = {
-  access_token: string;
+export type AuthorizedUser = {
+  email: string;
+  roles: string[];
 }
