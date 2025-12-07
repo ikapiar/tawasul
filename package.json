@@ -1,0 +1,10 @@
+{
+  "name": "tawasul",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ikapiar/tawasul.git"
+  },
+  "workspaces": ["packages/*"],
+  "private": true
+}
