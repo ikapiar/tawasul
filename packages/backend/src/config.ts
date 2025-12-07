@@ -40,4 +40,4 @@ export const UNIVERSAL_TOKEN = process.env['UNIVERSAL_TOKEN'] ?? 'adalah_token';
 export const IKAPIAR_ADMIN_EMAIL = process.env.IKAPIAR_ADMIN_EMAIL ?? 'admin@ikapiar'
 export const IKAPIAR_CONTACT_EMAIL = process.env.IKAPIAR_CONTACT_EMAIL ?? 'contact@ikapiar'
 
-export const FRONTEND_BASE_URL = process.env.FRONTEND_BASE_URL ?? 'http://localhost:4200'
+export const FRONTEND_BASE_URL = process.env.FRONTEND_BASE_URL ?? 'http://localhost:5173'

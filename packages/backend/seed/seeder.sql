@@ -14,4 +14,10 @@ INSERT INTO "angkatan" (name, "order", category) VALUES ('Alter', 13, 'putra');
 INSERT INTO "angkatan" (name, "order", category) VALUES ('Verwalten', 14, 'putra');
 INSERT INTO "angkatan" (name, "order", category) VALUES ('Endeavor', 15, 'putra');
 
-INSERT INTO "alumni" (name, email, phone, gender, "angkatanId") VALUES ('M. Sayyidus Shaleh Y.', 'yofadummy@gmail.com', '08xxxx', 'Laki-laki', 8)
+INSERT INTO "alumni" (name, email, phone, gender, "angkatanId") VALUES ('M. Sayyidus Shaleh Y.', 'yofadummy@gmail.com', '08xxxx', 'Laki-laki', 8);
+
+INSERT INTO "roles" (name) VALUES ('Super Admin');
+INSERT INTO "roles" (name) VALUES ('Admin Angkatan');
+INSERT INTO "roles" (name) VALUES ('Alumni');
+
+INSERT INTO "userToRole" ("userId", "roleId") VALUES (1, 1);

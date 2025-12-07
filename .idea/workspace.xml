@@ -4,11 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="rewrite" />
+    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="rewrite">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/seed/seeder.sql" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/seed/seeder.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/layouts/MainLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/layouts/MainLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/lib/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/pages/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/pages/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/services/apiClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/services/apiClient.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -22,8 +45,12 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ikapiar/tawasul.git&quot;,
-    &quot;accountId&quot;: &quot;c8233993-43c1-48e0-b24a-f32997764969&quot;
+    &quot;accountId&quot;: &quot;9e9c50bf-38de-4ec2-b743-7fed821cc3db&quot;
   }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
 }</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -34,27 +61,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.docker-compose.yml.database: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;bun&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/sayyidyofa/Codespace/WebstormProjects/tawasul/packages/backend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Bun.index.ts.executor": "Run",
+    "Docker.docker-compose.yml.database: Compose Deployment.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "bun",
+    "npm.frontend > dev.executor": "Run",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "C:\\Users\\PC\\Codespace\\WebstormProjects\\tawasul\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
+      "PostgreSQL"
+    ]
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RunManager" selected="Bun.index.ts">
+    <configuration name="index.ts" type="BunRunConfiguration" nameIsGenerated="true">
+      <option name="program" value="src/index.ts" />
+      <option name="runtimeParameters" value="--env-file=.env" />
+      <option name="workingDirectory" value="$PROJECT_DIR$/packages/backend" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -74,8 +117,24 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="frontend &gt; dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/packages/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Bun.index.ts" />
+      <item itemvalue="Docker.docker-compose.yml.database: Compose Deployment" />
+      <item itemvalue="npm.frontend &gt; dev" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.frontend &gt; dev" />
         <item itemvalue="Docker.docker-compose.yml.database: Compose Deployment" />
       </list>
     </recent_temporary>
@@ -97,6 +156,8 @@
       <workItem from="1765033060726" duration="1052000" />
       <workItem from="1765066555116" duration="1222000" />
       <workItem from="1765068066178" duration="1675000" />
+      <workItem from="1765073395390" duration="6562000" />
+      <workItem from="1765110495168" duration="7559000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore new">
       <option name="closed" value="true" />

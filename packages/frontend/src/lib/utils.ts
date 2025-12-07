@@ -46,3 +46,8 @@ export function debounce<T extends (...args: any[]) => any>(
 
     return debounced as typeof debounced & { cancel: () => void; flush: () => void }
 }
+
+export function scrollToId(id: string) {
+    const element = document.getElementById(id)
+    if (element) element.scrollIntoView({ behavior: "smooth" })
+}

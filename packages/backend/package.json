@@ -6,6 +6,7 @@
     "build": "bun build --compile --minify --sourcemap --bytecode --target=bun-linux-x64 ./src/index.ts --outfile tawasul-app"
   },
   "dependencies": {
+    "@bogeychan/elysia-logger": "^0.1.10",
     "@elysiajs/cors": "^1.4.0",
     "csv-parse": "^6.1.0",
     "dayjs": "^1.11.19",

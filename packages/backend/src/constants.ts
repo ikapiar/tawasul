@@ -16,3 +16,4 @@ export const UserStatuses = ['PendingApproval', ...CanLoginUserStatuses, 'Blocke
 export type UserStatus = typeof UserStatuses[number];
 
 export const USER_JWT_COOKIE_NAME = 'user_token'
+export const USER_JWT_COOKIE_DELETED_VALUE = 'deleted'

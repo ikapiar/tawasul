@@ -2,10 +2,9 @@ import { buttonVariants } from '../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { cn } from '../lib/utils'
 import React from "react";
+import {GOOGLE_LOGIN_URL} from "../constants";
 
 export default function LoginPage() {
-  const baseUrl = import.meta.env.VITE_API_BASE_URL || ''
-  const googleLoginUrl = `${baseUrl}/api/v1/auth/login/google`
 
   return (
     <Card>
@@ -15,7 +14,7 @@ export default function LoginPage() {
       </CardHeader>
       <CardContent>
         <a
-          href={googleLoginUrl}
+          href={GOOGLE_LOGIN_URL}
           className={cn(buttonVariants({ variant: 'default', size: 'lg' }), 'w-full justify-center')}
         >
           <GoogleIcon className="mr-2 h-5 w-5" /> Continue with Google

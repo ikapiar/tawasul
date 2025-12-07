@@ -1,9 +1,12 @@
 import type { ReactNode } from 'react'
 import { Link, useLocation } from 'wouter'
 import { buttonVariants } from '../components/ui/button'
+import {useAuthStore} from "../stores/authStore";
+import {scrollToId} from "../lib/utils";
 
 export default function MainLayout({ children }: { children: ReactNode }) {
   const [location] = useLocation()
+    const {isAuthenticated} = useAuthStore();
   return (
     <div className="min-h-screen flex flex-col">
       <header className="border-b bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/50">
@@ -14,12 +17,14 @@ export default function MainLayout({ children }: { children: ReactNode }) {
           </Link>
           <nav className="flex items-center gap-6 text-sm">
             <Link href="/" className={`hover:text-primary ${location === '/' ? 'text-primary' : ''}`}>Home</Link>
-            <Link href="#features" className="hover:text-primary">Features</Link>
-            <Link href="#contact" className="hover:text-primary">Contact</Link>
+            <Link href="#contact" className="hover:text-primary" onClick={() => scrollToId('#contact')}>Contact</Link>
           </nav>
           <div className="flex items-center gap-2">
-            <Link href="/login" className={buttonVariants({ variant: 'outline' })}>Sign in</Link>
-            <Link href="/dashboard" className={buttonVariants({ variant: 'success' })}>Dashboard</Link>
+              {
+                  isAuthenticated
+                      ? <Link href="/dashboard" className={buttonVariants({ variant: 'success' })}>Dashboard</Link>
+                      : <Link href="/login" className={buttonVariants({ variant: 'outline' })}>Sign in</Link>
+              }
           </div>
         </div>
       </header>

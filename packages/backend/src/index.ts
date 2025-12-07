@@ -3,16 +3,18 @@ import {createSecurityPlugin, isCSRFTokenValid} from "./plugins/security";
 import {FRONTEND_BASE_URL, JWT_MAX_AGE_SECONDS, OAUTH_CSRF_PARAM_NAME} from "./config";
 import {GoogleClient} from "./clients/GoogleClient";
 import {UserService} from "./services/UserService";
-import {USER_JWT_COOKIE_NAME, UserStatuses} from "./constants";
+import {USER_JWT_COOKIE_DELETED_VALUE, USER_JWT_COOKIE_NAME, UserStatuses} from "./constants";
 import {db} from "./db";
 import {logger} from "./logger";
 import {roleTable, SuperAdminRole, userTable, userToRole} from "./db/schemas";
 import {AlumniService} from "./services/AlumniService";
 import cors from "@elysiajs/cors";
+import {wrap} from "@bogeychan/elysia-logger";
 
 const prefix = '/api/v1'
 
 const app = new Elysia({prefix})
+    .use(wrap(logger))
     .use(cors({
         origin: ['http://localhost:5173']
     }))
@@ -23,7 +25,7 @@ const app = new Elysia({prefix})
     .group('/authorized', (authorizedRoutes) => authorizedRoutes
         .derive(async ({cookie, verifyJWT, decodeJWT}) => {
             const jwt = cookie[USER_JWT_COOKIE_NAME].value
-            if (typeof jwt !== "string") {
+            if (typeof jwt !== "string" || jwt === USER_JWT_COOKIE_DELETED_VALUE) {
                 return Promise.resolve({
                     user: null
                 })
@@ -62,7 +64,7 @@ const app = new Elysia({prefix})
         })
         .onBeforeHandle(({user, status}) => {
             if (!user) {
-                return status("Unauthorized")
+                return status(401, 'You have to be logged in to access')
             }
         })
         .derive(({user}) => ({user: user as AuthorizedUser}))
@@ -137,9 +139,11 @@ const app = new Elysia({prefix})
             if (!processedLogin.canLogin) {
                 return status("Unauthorized", processedLogin.message)
             }
-            cookie[USER_JWT_COOKIE_NAME].value = await signJWT(processedLogin.userData)
-            cookie[USER_JWT_COOKIE_NAME].maxAge = JWT_MAX_AGE_SECONDS
-            cookie[USER_JWT_COOKIE_NAME].httpOnly = true
+            cookie[USER_JWT_COOKIE_NAME].set({
+                value: await signJWT(processedLogin.userData),
+                maxAge: JWT_MAX_AGE_SECONDS,
+                httpOnly: true,
+            })
             return redirect(`${FRONTEND_BASE_URL}/dashboard`)
         }, {
             query: t.Object({
@@ -147,9 +151,8 @@ const app = new Elysia({prefix})
                 code: t.String({minLength: 10})
             })
         })
-        .post('/logout', ({cookie}) => {
-            cookie[USER_JWT_COOKIE_NAME].value = null
-            cookie[USER_JWT_COOKIE_NAME].maxAge = 0
+        .post('/logout', ({set}) => {
+            set.headers['Set-Cookie'] = `${USER_JWT_COOKIE_NAME}=${USER_JWT_COOKIE_DELETED_VALUE}; Max-Age=0; Path=/; HttpOnly`
             return 'cookie cleared'
         })
     )
