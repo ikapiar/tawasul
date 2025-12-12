@@ -1,9 +1,21 @@
 import { Link } from 'wouter'
+import {useEffect} from "react";
 import { buttonVariants } from '../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge'
+import {useAuthStore} from "../stores/authStore";
+import {useServices} from "../hooks/useServices";
 
 export default function LandingPage() {
+    const {fetchUser, isLoading} = useAuthStore()
+    const {authService} = useServices()
+    useEffect(() => {
+        fetchUser(authService).catch()
+    }, [])
+
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
   return (
     <div>
       {/* Hero */}
@@ -17,7 +29,7 @@ export default function LandingPage() {
               Tawasul helps alumni connect, share updates, and discover opportunities. Join the community and never miss a story.
             </p>
             <div className="mt-8 flex gap-3">
-              <Link href="/login" className={buttonVariants({ variant: 'success', size: 'lg' })}>Get Started</Link>
+              {/*<Link href="/login" className={buttonVariants({ variant: 'success', size: 'lg' })}>Get Started</Link>*/}
               <a href="#feed" className={buttonVariants({ variant: 'outline', size: 'lg' })}>Explore</a>
             </div>
           </div>

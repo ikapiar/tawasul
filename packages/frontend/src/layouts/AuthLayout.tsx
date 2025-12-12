@@ -1,4 +1,6 @@
 import { Link } from 'wouter'
+import {buttonVariants} from "../components/ui/button";
+import {Home} from "lucide-react";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -8,6 +10,11 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           <div className="h-10 w-10 rounded-lg bg-primary mx-auto mb-4" />
           <h2 className="text-3xl font-semibold">Welcome to Tawasul</h2>
           <p className="text-muted-foreground mt-2">Connect alumni, share stories, and explore opportunities.</p>
+            <div className="ml-auto flex items-center gap-2">
+                <Link href="/" className={buttonVariants({variant: 'outline'})}>
+                    <span className="inline-flex items-center gap-2"><Home/> Back to Landing page </span>
+                </Link>
+            </div>
         </div>
       </div>
       <div className="flex items-center justify-center p-6">
