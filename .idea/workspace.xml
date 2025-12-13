@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="updates">
+    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="bump ver 0.1.1">
+      <change afterPath="$PROJECT_DIR$/deploy/nginx.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/layouts/AuthLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/layouts/AuthLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/pages/Landing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/pages/Landing.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/routes/authorized.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/routes/authorized.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="93" />
+    <option name="cachedIndexableFilesCount" value="94" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -156,6 +153,10 @@
       <workItem from="1765110495168" duration="7692000" />
       <workItem from="1765198180875" duration="1906000" />
       <workItem from="1765236856735" duration="3021000" />
+      <workItem from="1765536784859" duration="2458000" />
+      <workItem from="1765539433047" duration="411000" />
+      <workItem from="1765623260413" duration="798000" />
+      <workItem from="1765625436823" duration="1046000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore new">
       <option name="closed" value="true" />
@@ -197,7 +198,23 @@
       <option name="project" value="LOCAL" />
       <updated>1765120567344</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix fetch user in every page">
+      <option name="closed" value="true" />
+      <created>1765536956239</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1765536956239</updated>
+    </task>
+    <task id="LOCAL-00007" summary="bump ver 0.1.1">
+      <option name="closed" value="true" />
+      <created>1765537001741</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1765537001741</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +236,8 @@
     <MESSAGE value="env gitignore" />
     <MESSAGE value="rewrite" />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="fix fetch user in every page" />
+    <MESSAGE value="bump ver 0.1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="bump ver 0.1.1" />
   </component>
 </project>
