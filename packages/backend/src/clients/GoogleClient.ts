@@ -1,7 +1,8 @@
 import {
+    GOOGLE_API_USER_INFO_URL,
     GOOGLE_OAUTH_CLIENT_ID,
-    GOOGLE_OAUTH_CLIENT_SECRET,
-    GOOGLE_OAUTH_REDIRECT_URL,
+    GOOGLE_OAUTH_CLIENT_SECRET, GOOGLE_OAUTH_LOGIN_PAGE_URL,
+    GOOGLE_OAUTH_REDIRECT_URL, GOOGLE_OAUTH_SCOPES, GOOGLE_OAUTH_TOKEN_EXCHANGE_URL,
     OAUTH_CSRF_PARAM_NAME
 } from "../config";
 import {Elysia} from "elysia";
@@ -13,12 +14,10 @@ export class GoogleClient {
         private readonly googleOauthClientId: string,
         private readonly googleOauthClientSecret: string,
         private readonly googleOauthRedirectURL: string,
-        private readonly googleOauthLoginPageURL = 'https://accounts.google.com/o/oauth2/auth',
-        private readonly googleOauthTokenExchangeURL = 'https://oauth2.googleapis.com/token',
-        private readonly googleAPIUserInfoURL = 'https://www.googleapis.com/userinfo/v2/me',
-        private readonly googleOauthScopes = [
-            'https://www.googleapis.com/auth/userinfo.email'
-        ],
+        private readonly googleOauthLoginPageURL = GOOGLE_OAUTH_LOGIN_PAGE_URL,
+        private readonly googleOauthTokenExchangeURL = GOOGLE_OAUTH_TOKEN_EXCHANGE_URL,
+        private readonly googleAPIUserInfoURL = GOOGLE_API_USER_INFO_URL,
+        private readonly googleOauthScopes = GOOGLE_OAUTH_SCOPES,
         private googleAPIRunScriptURL = (scriptId: string) => `https://script.googleapis.com/v1/scripts/${scriptId}:run`
     ) {
     }

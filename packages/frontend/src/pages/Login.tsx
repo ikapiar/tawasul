@@ -1,8 +1,8 @@
-import { buttonVariants } from '../components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
-import { cn } from '../lib/utils'
+import { buttonVariants } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 import React from "react";
-import {GOOGLE_LOGIN_URL} from "../constants";
+import {GOOGLE_LOGIN_URL} from "@/constants";
 
 export default function LoginPage() {
 

@@ -1,12 +1,24 @@
 import {Elysia, t} from "elysia";
 import {createSecurityPlugin, isCSRFTokenValid} from "./plugins/security";
-import {FRONTEND_BASE_URL, JWT_MAX_AGE_SECONDS, OAUTH_CSRF_PARAM_NAME} from "./config";
+import {
+    FRONTEND_BASE_URL,
+    JWT_MAX_AGE_SECONDS,
+    OAUTH_CSRF_PARAM_NAME,
+    UNIVERSAL_TOKEN,
+    UNIVERSAL_TOKEN_HEADER_KEY
+} from "./config";
 import {GoogleClient} from "./clients/GoogleClient";
 import {UserService} from "./services/UserService";
-import {USER_JWT_COOKIE_DELETED_VALUE, USER_JWT_COOKIE_NAME, UserStatuses} from "./constants";
+import {
+    ROOT_USER,
+    SuperAdminRole,
+    USER_JWT_COOKIE_DELETED_VALUE,
+    USER_JWT_COOKIE_NAME,
+    UserStatuses
+} from "./constants";
 import {db} from "./db";
 import {logger} from "./logger";
-import {roleTable, SuperAdminRole, userTable, userToRole} from "./db/schemas";
+import {roleTable, userTable, userToRole} from "./db/schemas";
 import {AlumniService} from "./services/AlumniService";
 import cors from "@elysiajs/cors";
 import {wrap} from "@bogeychan/elysia-logger";
@@ -23,7 +35,16 @@ const app = new Elysia({prefix})
     .use(UserService.userServicePlugin())
     .use(AlumniService.alumniServicePlugin())
     .group('/authorized', (authorizedRoutes) => authorizedRoutes
-        .derive(async ({cookie, verifyJWT, decodeJWT}) => {
+        .derive(async ({cookie, verifyJWT, decodeJWT, headers}) => {
+            const universalToken = headers[UNIVERSAL_TOKEN_HEADER_KEY];
+            if (universalToken) {
+                if (universalToken === UNIVERSAL_TOKEN) {
+                    return {
+                        user: ROOT_USER
+                    }
+                }
+            }
+
             const jwt = cookie[USER_JWT_COOKIE_NAME].value
             if (typeof jwt !== "string" || jwt === USER_JWT_COOKIE_DELETED_VALUE) {
                 return Promise.resolve({
@@ -124,20 +145,20 @@ const app = new Elysia({prefix})
         .get(('/login/google'), ({googleClient, redirect}) => {
             return redirect(googleClient.generateGoogleLoginURL())
         })
-        .get('/callback/google', async ({googleClient, userService, signJWT, query, status, cookie, redirect}) => {
+        .get('/callback/google', async ({googleClient, userService, signJWT, query, cookie, redirect}) => {
             // verify csrf token
             // name=value url encoded
             const csrfValue = decodeURIComponent(query.state).split("=")[1]
             const isCsrfValid = isCSRFTokenValid(csrfValue)
             if (!isCsrfValid) {
-                return status("Forbidden", "CSRF Validation Failed")
+                return redirect(`${FRONTEND_BASE_URL}/login?error=${encodeURIComponent('CSRF Validation Failed. Try login in the same browser')}`)
             }
             const userData = {
                 email: await googleClient.getUserEmail(query.code)
             }
             const processedLogin = await userService.processLogin(userData)
             if (!processedLogin.canLogin) {
-                return status("Unauthorized", processedLogin.message)
+                return redirect(`${FRONTEND_BASE_URL}/login?error=${encodeURIComponent(processedLogin.message)}`)
             }
             cookie[USER_JWT_COOKIE_NAME].set({
                 value: await signJWT(processedLogin.userData),

@@ -5,7 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="nginx.conf">
+      <change afterPath="$PROJECT_DIR$/deploy/tawasul.service" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/backend/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/frontend/components.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/frontend/src/components/ui/alert.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/frontend/src/components/ui/logo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deploy/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/deploy/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/clients/GoogleClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/clients/GoogleClient.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/db/schemas/role.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/db/schemas/role.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/layouts/AuthLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/layouts/AuthLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/layouts/MainLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/layouts/MainLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/lib/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/pages/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/pages/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,13 +36,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="94" />
+    <option name="cachedIndexableFilesCount" value="97" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -51,40 +75,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Bun.index.ts.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.database: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;bun&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;bun&quot;,
-    &quot;npm.frontend &gt; dev.executor&quot;: &quot;Run&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Codespace\\WebstormProjects\\tawasul\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Bun.Backend Local.executor": "Run",
+    "Bun.index.ts.executor": "Run",
+    "Docker.docker-compose.yml.database: Compose Deployment.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "javascript.preferred.runtime.type.id": "bun",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/PC/Codespace/WebstormProjects/tawasul/packages/frontend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "bun",
+    "npm.backend > dev.executor": "Run",
+    "npm.frontend > dev.executor": "Run",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "C:\\Users\\PC\\Codespace\\WebstormProjects\\tawasul\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
-      &quot;PostgreSQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
+      "PostgreSQL"
     ]
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Codespace\WebstormProjects\tawasul\packages\frontend" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.frontend &gt; dev">
-    <configuration name="index.ts" type="BunRunConfiguration" nameIsGenerated="true">
+    <configuration name="Backend Local" type="BunRunConfiguration">
       <option name="program" value="src/index.ts" />
       <option name="runtimeParameters" value="--env-file=.env" />
       <option name="workingDirectory" value="$PROJECT_DIR$/packages/backend" />
@@ -109,6 +141,16 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="backend &gt; dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/packages/backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="frontend &gt; dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/packages/frontend/package.json" />
       <command value="run" />
@@ -120,13 +162,15 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Bun.index.ts" />
+      <item itemvalue="Bun.Backend Local" />
       <item itemvalue="Docker.docker-compose.yml.database: Compose Deployment" />
+      <item itemvalue="npm.backend &gt; dev" />
       <item itemvalue="npm.frontend &gt; dev" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.frontend &gt; dev" />
+        <item itemvalue="npm.backend &gt; dev" />
         <item itemvalue="Docker.docker-compose.yml.database: Compose Deployment" />
       </list>
     </recent_temporary>
@@ -155,7 +199,9 @@
       <workItem from="1765536784859" duration="2458000" />
       <workItem from="1765539433047" duration="411000" />
       <workItem from="1765623260413" duration="798000" />
-      <workItem from="1765625436823" duration="1479000" />
+      <workItem from="1765625436823" duration="5491000" />
+      <workItem from="1765884897994" duration="173000" />
+      <workItem from="1765885082033" duration="5871000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore new">
       <option name="closed" value="true" />
@@ -221,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765626653779</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="nginx.conf">
+      <option name="closed" value="true" />
+      <created>1765626936356</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1765626936356</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

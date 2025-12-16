@@ -35,6 +35,8 @@ eYeG10t2gJwMn9PckQ4=
 export const JWT_ALGORITHM = 'ES512';
 export const JWT_MAX_AGE_SECONDS = 604800; // 7 days
 
+// all api access token
+export const UNIVERSAL_TOKEN_HEADER_KEY = process.env['UNIVERSAL_TOKEN_HEADER_KEY'] ?? 'UNIVERSAL_TOKEN';
 export const UNIVERSAL_TOKEN = process.env['UNIVERSAL_TOKEN'] ?? 'adalah_token';
 
 export const IKAPIAR_ADMIN_EMAIL = process.env.IKAPIAR_ADMIN_EMAIL ?? 'admin@ikapiar'

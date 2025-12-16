@@ -1,0 +1,14 @@
+[Unit]
+Description=Tawasul Backend Service
+After=network.target
+Wants=network-online.target
+
+[Service]
+Restart=always
+Type=simple
+ExecStart=/apps/tawasul/bin/tawasul-app
+User=tawasul
+EnvironmentFile=/apps/tawasul/etc/staging.env
+
+[Install]
+WantedBy=multi-user.target

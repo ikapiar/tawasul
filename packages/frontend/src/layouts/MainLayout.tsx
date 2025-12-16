@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react'
 import { Link, useLocation } from 'wouter'
-import { buttonVariants } from '../components/ui/button'
-import {useAuthStore} from "../stores/authStore";
-import {scrollToId} from "../lib/utils";
+import { buttonVariants } from '@/components/ui/button'
+import {useAuthStore} from "@/stores/authStore";
+import {scrollToId} from "@/lib/utils";
 
 export default function MainLayout({ children }: { children: ReactNode }) {
   const [location] = useLocation()

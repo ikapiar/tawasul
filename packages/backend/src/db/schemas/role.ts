@@ -2,12 +2,6 @@ import {integer, pgTable, primaryKey, serial, varchar} from "drizzle-orm/pg-core
 import {relations} from "drizzle-orm";
 import {userTable} from "./user";
 
-export const SuperAdminRole = 'Super Admin' as const;
-export const AdminAngkatanRole = 'Admin Angkatan' as const;
-export const AlumniRole = 'Alumni' as const;
-export const ApproverRoles = [SuperAdminRole, AdminAngkatanRole] as const
-export type ApproverRole = typeof ApproverRoles[number];
-
 export const roleTable = pgTable('roles', {
     id: serial().primaryKey(),
     name: varchar({ length: 255 }).notNull(),

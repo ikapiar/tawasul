@@ -13,7 +13,11 @@
     "strict": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "baseUrl": ".", // Must be set for "paths" to work
+    "paths": {
+      "@/*": ["src/*"] // Map "@/*" to "src/*"
+    }
   },
-  "include": ["src"]
+  "include": ["src/**/*"]
 }
