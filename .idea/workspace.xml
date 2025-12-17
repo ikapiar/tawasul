@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="add error message on failed login">
-      <change afterPath="$PROJECT_DIR$/packages/backend/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/frontend/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/frontend/Dockerfile" afterDir="false" />
+    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="dockers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +203,7 @@
       <workItem from="1765885082033" duration="6752000" />
       <workItem from="1765896749038" duration="692000" />
       <workItem from="1765935003909" duration="926000" />
-      <workItem from="1765971891829" duration="1434000" />
+      <workItem from="1765971891829" duration="2622000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore new">
       <option name="closed" value="true" />
@@ -284,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765895356016</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="dockers">
+      <option name="closed" value="true" />
+      <created>1765973360885</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1765973360885</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,6 +319,7 @@
     <MESSAGE value="bump ver 0.1.1" />
     <MESSAGE value="nginx.conf" />
     <MESSAGE value="add error message on failed login" />
-    <option name="LAST_COMMIT_MESSAGE" value="add error message on failed login" />
+    <MESSAGE value="dockers" />
+    <option name="LAST_COMMIT_MESSAGE" value="dockers" />
   </component>
 </project>

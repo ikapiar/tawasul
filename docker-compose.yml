@@ -1,6 +1,6 @@
 services:
   backend:
-    image: ghcr.io/tawasul-io/backend:latest
+    image: ghcr.io/tawasul/backend:${VERSION:-latest}
     pull_policy: always
     build:
       context: packages/backend
@@ -11,12 +11,12 @@ services:
     env_file:
       - ./.env.docker-compose
   frontend:
-    image: ghcr.io/tawasul-io/frontend:latest
+    image: ghcr.io/tawasul/frontend:${VERSION:-latest}
     pull_policy: always
     build:
       context: packages/frontend
       args:
-        - BACKEND_BASE_URL=http://localhost:3000
+        - BACKEND_BASE_URL=${BACKEND_BASE_URL:-http://localhost:3000/}
     depends_on:
       - backend
     ports:
