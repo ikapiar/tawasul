@@ -1,6 +1,9 @@
 services:
   backend:
-    build: packages/backend
+    image: ghcr.io/tawasul-io/backend:latest
+    pull_policy: always
+    build:
+      context: packages/backend
     depends_on:
       - database
     ports:
@@ -8,7 +11,12 @@ services:
     env_file:
       - ./.env.docker-compose
   frontend:
-    build: packages/frontend
+    image: ghcr.io/tawasul-io/frontend:latest
+    pull_policy: always
+    build:
+      context: packages/frontend
+      args:
+        - BACKEND_BASE_URL=http://localhost:3000
     depends_on:
       - backend
     ports:
