@@ -12,6 +12,7 @@ import {
 import {createCipheriv, createDecipheriv} from 'node:crypto';
 import {Elysia} from "elysia";
 import {USER_JWT_COOKIE_NAME} from "../constants";
+import {AuthorizedUser} from "../services/UserService";
 
 export const createSecurityPlugin = async () => {
     // 1. Await all your async dependencies first
@@ -30,7 +31,7 @@ export async function generateSigner() {
 	const privateKey = await importPKCS8(JWT_PRIVATE_KEY.trim(), JWT_ALGORITHM);
 	const encodeBase64 = (str: string) => Buffer.from(str).toString('base64');
     const signer = new SignJWT({alg: JWT_ALGORITHM});
-	return async (payload: UserData) => signer
+	return async (payload: AuthorizedUser) => signer
         .setExpirationTime(Math.floor(Date.now()/1000) + JWT_MAX_AGE_SECONDS)
         .setSubject(encodeBase64(JSON.stringify(payload)))
         .setProtectedHeader({alg: JWT_ALGORITHM})

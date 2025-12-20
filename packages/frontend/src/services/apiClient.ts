@@ -1,4 +1,4 @@
-import {BACKEND_BASE_URL} from "../constants";
+import {BACKEND_BASE_URL} from "@/constants";
 import type { Backend } from 'backend/src'
 import {treaty} from "@elysiajs/eden";
 import {toast} from "sonner";

@@ -1,8 +1,8 @@
 import {Redirect, Route} from "wouter";
 import {ReactNode, useEffect} from "react";
-import {useAuthStore} from "../stores/authStore";
-import {User} from "../types";
-import {useServices} from "../hooks/useServices";
+import {useAuthStore} from "@/stores/authStore";
+import {useServices} from "@/hooks/useServices";
+import {AuthorizedUser} from "backend/src/services/UserService";
 
 export function AuthorizedRoute({children, path, roles = []}: {children: ReactNode, path: string, roles?: string[]}) {
     const {authService} = useServices()
@@ -37,7 +37,7 @@ export function AuthorizedRoute({children, path, roles = []}: {children: ReactNo
     );
 }
 
-function userHasRole(user: User | null, requiredRoles: string[]): boolean {
+function userHasRole(user: AuthorizedUser | null, requiredRoles: string[]): boolean {
     if (!user) {
         return false
     }

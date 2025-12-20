@@ -4,13 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="dockers">
+    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="dockers, update deps">
+      <change afterPath="$PROJECT_DIR$/packages/frontend/src/services/admin.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/plugins/security.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/plugins/security.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/services/UserService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/services/UserService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/components/ui/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/components/ui/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/components/ui/input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/components/ui/label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/components/ui/label.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/layouts/DashboardLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/layouts/DashboardLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/pages/dashboard/Stats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/pages/dashboard/Stats.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/routes/authorized.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/routes/authorized.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/services/apiClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/services/apiClient.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/services/stats.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/services/stats.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/services/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/services/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/stores/authStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/stores/authStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,15 +30,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="101" />
+    <option name="cachedIndexableFilesCount" value="108" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Dockerfile" />
         <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
-        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -49,6 +61,10 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -64,6 +80,7 @@
     "Bun.index.ts.executor": "Run",
     "Docker.docker-compose.yml.database: Compose Deployment.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -81,6 +98,7 @@
     "npm.backend > dev.executor": "Run",
     "npm.frontend > build.executor": "Run",
     "npm.frontend > dev.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.sourceCode.JavaScript",
     "to.speed.mode.migration.done": "true",
     "ts.external.directory.path": "C:\\Users\\PC\\Codespace\\WebstormProjects\\tawasul\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
@@ -91,9 +109,19 @@
     ],
     "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
       "PostgreSQL"
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
+      "PostgreSQL"
     ]
   }
 }]]></component>
+  <component name="RecapSpentCounter">
+    <option name="endsOfQuotaMs" value="1766451606877" />
+    <option name="spentUsd" value="0.024440099" />
+  </component>
+  <component name="RecapUselessUpdatesCounter">
+    <option name="suspendCountdown" value="8" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\PC\Codespace\WebstormProjects\tawasul\packages\frontend" />
@@ -102,7 +130,7 @@
       <recent name="C:\Users\PC\Codespace\WebstormProjects\tawasul\packages\frontend" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.frontend &gt; build">
+  <component name="RunManager" selected="npm.frontend &gt; dev">
     <configuration name="Backend Local" type="BunRunConfiguration">
       <option name="program" value="src/index.ts" />
       <option name="runtimeParameters" value="--env-file=.env" />
@@ -167,8 +195,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.frontend &gt; build" />
         <item itemvalue="npm.frontend &gt; dev" />
+        <item itemvalue="npm.frontend &gt; build" />
         <item itemvalue="npm.backend &gt; dev" />
         <item itemvalue="Docker.docker-compose.yml.database: Compose Deployment" />
       </list>
@@ -177,7 +205,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-c7e53b3be11b-JavaScript-WS-253.28294.332" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.29346.143" />
       </set>
     </attachedChunks>
   </component>
@@ -203,7 +231,9 @@
       <workItem from="1765885082033" duration="6752000" />
       <workItem from="1765896749038" duration="692000" />
       <workItem from="1765935003909" duration="926000" />
-      <workItem from="1765971891829" duration="2622000" />
+      <workItem from="1765971891829" duration="6388000" />
+      <workItem from="1766020054936" duration="9158000" />
+      <workItem from="1766199481219" duration="5950000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore new">
       <option name="closed" value="true" />
@@ -293,7 +323,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765973360885</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="dockers, update deps">
+      <option name="closed" value="true" />
+      <created>1765975407431</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1765975407431</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,6 +358,7 @@
     <MESSAGE value="nginx.conf" />
     <MESSAGE value="add error message on failed login" />
     <MESSAGE value="dockers" />
-    <option name="LAST_COMMIT_MESSAGE" value="dockers" />
+    <MESSAGE value="dockers, update deps" />
+    <option name="LAST_COMMIT_MESSAGE" value="dockers, update deps" />
   </component>
 </project>

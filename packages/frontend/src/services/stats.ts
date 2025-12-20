@@ -11,4 +11,8 @@ export class StatisticsService implements IStatisticsService {
             newArticles: 0
         }
     }
+
+    uploadSurveyData = async (csvFile: File) => {
+        await this.apiClient.authorized.sadmin.alumniSurvey.post({file: csvFile})
+    }
 }

@@ -1,8 +1,8 @@
 import { Link } from 'wouter'
-import { Button, buttonVariants } from '../components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import { Menu, Home, LogOut, BarChart3, FileText } from 'lucide-react'
 import { useState, ReactNode } from 'react'
-import {useServices} from "../hooks/useServices";
+import {useServices} from "@/hooks/useServices";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
     const {authService} = useServices()
@@ -22,7 +22,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             <BarChart3 size={18} /> <span>Statistics</span>
           </Link>
           <Link href="/" className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-accent">
-            <FileText size={18} /> <span>Articles & News</span>
+            <FileText size={18} /> <span>Landing Page</span>
           </Link>
         </nav>
       </aside>

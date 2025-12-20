@@ -1,10 +1,10 @@
 import {create} from "zustand";
-import {IAuthService} from "../services/types";
-import {User} from "../types";
+import {IAuthService} from "@/services/types";
+import {AuthorizedUser} from "backend/src/services/UserService";
 
 export type AuthState = {
-    user: User | null,
-    setUser: (user: User | null) => void,
+    user: AuthorizedUser | null,
+    setUser: (user: AuthorizedUser | null) => void,
     isLoading: boolean,
     fetchUser: (authService: IAuthService) => Promise<void>,
     isAuthenticated: boolean,

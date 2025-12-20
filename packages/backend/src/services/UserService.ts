@@ -2,9 +2,9 @@ import {Elysia} from "elysia";
 import {UserData} from "../plugins/security";
 import {db} from "../db";
 import {eq, ilike} from "drizzle-orm";
-import {CanLoginUserStatus, CanLoginUserStatuses} from "../constants";
+import {AlumniRole, CanLoginUserStatus, CanLoginUserStatuses} from "../constants";
 import {IKAPIAR_ADMIN_EMAIL} from "../config";
-import {userTable, alumniTable, alumniSurveyTable, angkatanTable} from "../db/schemas";
+import {userTable, alumniTable, alumniSurveyTable, angkatanTable, roleTable, userToRole} from "../db/schemas";
 
 export class UserService {
 
@@ -37,7 +37,7 @@ export class UserService {
                     .execute()
                 if (foundAlumniSurvey.length !== 1) {
                     return {
-                        userData,
+                        user: { email: '', roles: []},
                         canLogin: false,
                         message: `Data anda (${userData.email}) tidak ditemukan dalam database alumni IKAPIAR. Harap hubungi ketua angkatan atau admin IKAPIAR (${IKAPIAR_ADMIN_EMAIL})`
                     }
@@ -47,7 +47,7 @@ export class UserService {
                 const foundAngkatan = await db.select().from(angkatanTable).where(ilike(angkatanTable.name, surveyData.angkatan)).limit(1).execute()
                 if (foundAngkatan.length !== 1) {
                     return {
-                        userData,
+                        user: { email: '', roles: []},
                         canLogin: false,
                         message: `Data anda (${userData.email}) ditemukan dalam database alumni, namun nama angakatan invalid (${surveyData.angkatan}). Harap pastikan kembali data yang anda isi di survey alumni dan kontak admin ikapiar (${IKAPIAR_ADMIN_EMAIL})`
                     }
@@ -66,7 +66,7 @@ export class UserService {
                     status: 'Active'
                 }).execute()
                 return {
-                    userData,
+                    user: { email: '', roles: []},
                     canLogin: true,
                     message: 'ok'
                 }
@@ -78,8 +78,17 @@ export class UserService {
                 email: alumniData.email,
                 status: 'Approved'
             }).execute()
+            // check if the role "Alumni" exists
+            let foundAlumniRole = await db.query.roleTable.findFirst({where: eq(roleTable.name, AlumniRole)})
+            // insert if not
+            if (!foundAlumniRole) {
+                await db.insert(roleTable).values({name: AlumniRole}).execute()
+                foundAlumniRole = await db.query.roleTable.findFirst({where: eq(roleTable.name, AlumniRole)})
+            }
+            // insert many-to-many relationship between user and role
+            await db.insert(userToRole).values({userId: foundUser[0].id, roleId: foundAlumniRole!.id}).execute()
             return {
-                userData,
+                user: { email: alumniData.email, roles: [foundAlumniRole!.name]},
                 canLogin: true,
                 message: 'ok'
             }
@@ -88,14 +97,20 @@ export class UserService {
         // if user can not log in, reject the login, tell the user status and user should reach out to admins
         if (!CanLoginUserStatuses.includes(foundUser[0].status as CanLoginUserStatus)) {
             return {
-                userData,
+                user: { email: userData.email, roles: []},
                 canLogin: false,
                 message: `Akun anda ditemukan, namun dalam status ${foundUser[0].status}. Harap hubungi admin ikapiar ${IKAPIAR_ADMIN_EMAIL}`,
             }
         }
         // if user can log in, accept the login
+        // get user roles
+        const roleRelations = await db.select().from(userToRole).where(eq(userToRole.userId, foundUser[0].id)).execute()
+        const maybeRoles = roleRelations.map(
+            async ({roleId}) => await db.query.roleTable.findFirst({where: eq(roleTable.id, roleId)}).execute()
+        )
+        const roles = await Promise.all(maybeRoles).then(roles => roles.filter(role => role !== undefined).map(({name}) => name))
         return {
-            userData,
+            user: { email: userData.email, roles},
             canLogin: true,
             message: 'ok'
         }
@@ -103,12 +118,12 @@ export class UserService {
 }
 
 export type ProcessedLogin = {
-    userData: UserData,
+    user: AuthorizedUser,
     canLogin: boolean,
     message: string
 }
 
 export type AuthorizedUser = {
-    userData: UserData,
+    email: string,
     roles: string[],
 }

@@ -102,11 +102,13 @@ const app = new Elysia({prefix})
                 }
             })
             .post('/alumniSurvey', async ({body, alumniService}) => {
-                const fileContent = new TextDecoder().decode((await body.arrayBuffer()))
+                const fileContent = new TextDecoder().decode((await body.file.arrayBuffer()))
                 const parsed = await alumniService.parseSurveyCSV(fileContent)
                 await alumniService.replaceAllSurveyData(parsed)
             }, {
-                body: t.File({ format: 'text/csv' })
+                body: t.Object({
+                    file: t.File()
+                }),
             })
             .post('/users', async ({body}) => {
                 const {roles, ...userData} = body
@@ -161,7 +163,7 @@ const app = new Elysia({prefix})
                 return redirect(`${FRONTEND_BASE_URL}/login?error=${encodeURIComponent(processedLogin.message)}`)
             }
             cookie[USER_JWT_COOKIE_NAME].set({
-                value: await signJWT(processedLogin.userData),
+                value: await signJWT(processedLogin.user),
                 maxAge: JWT_MAX_AGE_SECONDS,
                 httpOnly: true,
             })
