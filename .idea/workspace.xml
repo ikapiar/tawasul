@@ -4,25 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="dockers, update deps">
-      <change afterPath="$PROJECT_DIR$/packages/frontend/src/services/admin.ts" afterDir="false" />
+    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="workflow: update image">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/src/plugins/security.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/plugins/security.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/src/services/UserService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/services/UserService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/components/ui/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/components/ui/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/components/ui/input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/components/ui/label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/components/ui/label.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/layouts/DashboardLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/layouts/DashboardLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/pages/dashboard/Stats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/pages/dashboard/Stats.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/routes/authorized.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/routes/authorized.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/services/apiClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/services/apiClient.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/services/stats.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/services/stats.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/services/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/services/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/stores/authStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/stores/authStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/frontend/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,53 +62,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Bun.Backend Local.executor": "Run",
-    "Bun.index.ts.executor": "Run",
-    "Docker.docker-compose.yml.database: Compose Deployment.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "master",
-    "javascript.preferred.runtime.type.id": "bun",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/PC/Codespace/WebstormProjects/tawasul/packages/frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "bun",
-    "npm.backend > dev.executor": "Run",
-    "npm.frontend > build.executor": "Run",
-    "npm.frontend > dev.executor": "Run",
-    "settings.editor.selected.configurable": "preferences.sourceCode.JavaScript",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "C:\\Users\\PC\\Codespace\\WebstormProjects\\tawasul\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Bun.Backend Local.executor&quot;: &quot;Run&quot;,
+    &quot;Bun.index.ts.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.database: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;bun&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Codespace/WebstormProjects/tawasul/packages/frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;bun&quot;,
+    &quot;npm.backend &gt; dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.frontend &gt; build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.frontend &gt; dev.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.JavaScript&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\PC\\Codespace\\WebstormProjects\\tawasul\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
-      "PostgreSQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;PostgreSQL&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
-      "PostgreSQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
+      &quot;PostgreSQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecapSpentCounter">
     <option name="endsOfQuotaMs" value="1766451606877" />
-    <option name="spentUsd" value="0.024440099" />
+    <option name="spentUsd" value="0.0830385" />
   </component>
   <component name="RecapUselessUpdatesCounter">
-    <option name="suspendCountdown" value="8" />
+    <option name="suspendCountdown" value="0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -130,7 +118,7 @@
       <recent name="C:\Users\PC\Codespace\WebstormProjects\tawasul\packages\frontend" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.frontend &gt; dev">
+  <component name="RunManager" selected="npm.frontend &gt; build">
     <configuration name="Backend Local" type="BunRunConfiguration">
       <option name="program" value="src/index.ts" />
       <option name="runtimeParameters" value="--env-file=.env" />
@@ -195,8 +183,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.frontend &gt; dev" />
         <item itemvalue="npm.frontend &gt; build" />
+        <item itemvalue="npm.frontend &gt; dev" />
         <item itemvalue="npm.backend &gt; dev" />
         <item itemvalue="Docker.docker-compose.yml.database: Compose Deployment" />
       </list>
@@ -233,7 +221,10 @@
       <workItem from="1765935003909" duration="926000" />
       <workItem from="1765971891829" duration="6388000" />
       <workItem from="1766020054936" duration="9158000" />
-      <workItem from="1766199481219" duration="5950000" />
+      <workItem from="1766199481219" duration="7233000" />
+      <workItem from="1766228230787" duration="2165000" />
+      <workItem from="1766274924827" duration="2940000" />
+      <workItem from="1766291792882" duration="3060000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore new">
       <option name="closed" value="true" />
@@ -331,7 +322,31 @@
       <option name="project" value="LOCAL" />
       <updated>1765975407431</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="complete the upload survey result feature, fix login user roles">
+      <option name="closed" value="true" />
+      <created>1766213415861</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1766213415861</updated>
+    </task>
+    <task id="LOCAL-00014" summary="0.2.0 bump version">
+      <option name="closed" value="true" />
+      <created>1766213455604</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1766213455604</updated>
+    </task>
+    <task id="LOCAL-00015" summary="workflow: update image">
+      <option name="closed" value="true" />
+      <created>1766292264017</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1766292264017</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,6 +374,9 @@
     <MESSAGE value="add error message on failed login" />
     <MESSAGE value="dockers" />
     <MESSAGE value="dockers, update deps" />
-    <option name="LAST_COMMIT_MESSAGE" value="dockers, update deps" />
+    <MESSAGE value="complete the upload survey result feature, fix login user roles" />
+    <MESSAGE value="0.2.0 bump version" />
+    <MESSAGE value="workflow: update image" />
+    <option name="LAST_COMMIT_MESSAGE" value="workflow: update image" />
   </component>
 </project>

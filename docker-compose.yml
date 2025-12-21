@@ -1,26 +1,15 @@
 services:
-  backend:
-    image: ghcr.io/tawasul/backend:${VERSION:-latest}
-    pull_policy: always
+  app:
+    image: ghcr.io/ikapiar/tawasul:latest
     build:
-      context: packages/backend
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - database
     ports:
-      - "3000:3000"
+      - "80:3000"
     env_file:
       - ./.env.docker-compose
-  frontend:
-    image: ghcr.io/tawasul/frontend:${VERSION:-latest}
-    pull_policy: always
-    build:
-      context: packages/frontend
-      args:
-        - BACKEND_BASE_URL=${BACKEND_BASE_URL:-http://localhost:3000/}
-    depends_on:
-      - backend
-    ports:
-      - "80:80"
   database:
     image: postgres
     environment:

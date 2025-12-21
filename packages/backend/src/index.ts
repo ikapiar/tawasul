@@ -1,4 +1,5 @@
 import {Elysia, t} from "elysia";
+import {staticPlugin} from "@elysiajs/static";
 import {createSecurityPlugin, isCSRFTokenValid} from "./plugins/security";
 import {
     FRONTEND_BASE_URL,
@@ -25,8 +26,7 @@ import {wrap} from "@bogeychan/elysia-logger";
 
 const prefix = '/api/v1'
 
-const app = new Elysia({prefix})
-    .use(wrap(logger))
+const api = new Elysia({prefix})
     .use(cors({
         origin: ['http://localhost:5173']
     }))
@@ -180,6 +180,15 @@ const app = new Elysia({prefix})
         })
     )
     .get("/", () => "Hello Tawasul API")
+
+const app = new Elysia()
+    .use(wrap(logger))
+    .use(api)
+    .use(staticPlugin({
+        assets: 'public',
+        prefix: '/'
+    }))
+    .get('*', () => Bun.file('public/index.html'))
     .listen(3000);
 
 // for frontend client

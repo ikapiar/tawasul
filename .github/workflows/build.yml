@@ -7,27 +7,15 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build-backend:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Build and Publish Backend Docker Image
+    - name: Build and Publish Unified Docker Image
       uses: macbre/push-to-ghcr@master
       with:
-          image_name: ikapiar/tawasul-backend
+          image_name: ikapiar/tawasul
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          dockerfile: packages/backend/Dockerfile
-          context: packages/backend/
-  build-frontend:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Build and Publish Frontend Docker Image
-      uses: macbre/push-to-ghcr@master
-      with:
-          image_name: ikapiar/tawasul-frontend
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          dockerfile: packages/frontend/Dockerfile
-          context: packages/frontend/
-          extra_args: "--build-arg BACKEND_BASE_URL=''"
+          dockerfile: Dockerfile
+          context: .
   
