@@ -1,0 +1,34 @@
+name: Build to Dev
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build-backend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build and Publish Backend Docker Image
+      uses: macbre/push-to-ghcr@master
+      with:
+          image_name: ikapiar/tawasul-backend:latest
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          dockerfile: packages/backend/Dockerfile
+          context: packages/backend/
+  build-frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build and Publish Frontend Docker Image
+      uses: macbre/push-to-ghcr@master
+      with:
+          image_name: ikapiar/tawasul-frontend:latest
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          dockerfile: packages/frontend/Dockerfile
+          context: packages/frontend/
+          extra_args: "--build-arg BACKEND_BASE_URL=''"
+      #run: docker build packages/frontend/ --file packages/frontend/Dockerfile --build-arg BACKEND_BASE_URL="" --tag ghcr.io/ikapiar/tawasul-frontend:latest
+  
