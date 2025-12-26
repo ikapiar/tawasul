@@ -1,0 +1,231 @@
+import {Elysia, t} from "elysia";
+import {createSecurityPlugin, isCSRFTokenValid} from "./plugins/security";
+import {
+    API_BASE_URL,
+    FRONTEND_BASE_URL,
+    JWT_MAX_AGE_SECONDS,
+    OAUTH_CSRF_PARAM_NAME,
+    UNIVERSAL_TOKEN,
+    UNIVERSAL_TOKEN_HEADER_KEY
+} from "./config";
+import {GoogleClient} from "./clients/GoogleClient";
+import {UserService} from "./services/UserService";
+import {
+    ROOT_USER,
+    SuperAdminRole,
+    USER_JWT_COOKIE_DELETED_VALUE,
+    USER_JWT_COOKIE_NAME,
+    UserStatuses
+} from "./constants";
+import {db} from "./db";
+import {logger} from "./logger";
+import {roleTable, userTable, userToRole} from "./db/schemas";
+import {AlumniService} from "./services/AlumniService";
+import { StatisticsService } from "./services/StatisticsService";
+
+const prefix = '/api/v1'
+
+const api = new Elysia({prefix})
+    .onAfterHandle(({ set }) => {
+        if (process.env['NODE_ENV'] !== 'production') {
+            set.headers['Access-Control-Allow-Origin'] = 'http://localhost:5173'
+            set.headers['Access-Control-Allow-Credentials'] = 'true'
+        }
+    })
+    .use(createSecurityPlugin())
+    .use(GoogleClient.googleClientPlugin())
+    .use(UserService.userServicePlugin())
+    .use(AlumniService.alumniServicePlugin())
+    .use(StatisticsService.statisticsServicePlugin())
+    .group('/authorized', (authorizedRoutes) => authorizedRoutes
+        .derive(async ({cookie, verifyJWT, decodeJWT, headers}) => {
+            const universalToken = headers[UNIVERSAL_TOKEN_HEADER_KEY];
+            if (universalToken) {
+                if (universalToken === UNIVERSAL_TOKEN) {
+                    return {
+                        user: ROOT_USER
+                    }
+                }
+            }
+
+            const jwt = cookie[USER_JWT_COOKIE_NAME].value
+            if (typeof jwt !== "string" || jwt === USER_JWT_COOKIE_DELETED_VALUE) {
+                return Promise.resolve({
+                    user: null
+                })
+                //return status("Unauthorized", `Cookie ${USER_JWT_COOKIE_NAME} required`)
+            }
+            return await verifyJWT(jwt)
+                .then(async ({payload}) => {
+                    const {email} = decodeJWT(payload)
+                    const user = await db.query.userTable.findFirst({
+                        where: (userTable, {eq}) => eq(userTable.email, email),
+                        with: {
+                            roles: true
+                        }
+                    })
+                    if (!user) {
+                        return {
+                            user: null
+                        }
+                        //return status("Not Found", "User not found")
+                    }
+                    const {roles, name} = user
+                    const realRoles = await Promise.all(roles.map(async role => await db.query.roleTable.findFirst({where: (roleTable, {eq}) => eq(roleTable.id, role.roleId)})))
+                    const authorizedUser: AuthorizedUser = {
+                        name,
+                        email,
+                        roles: realRoles.filter(role => role !== undefined).map(role => role.name)
+                    }
+                    return {
+                        user: authorizedUser
+                    }
+                })
+                .catch((e) => {
+                    logger.error(e)
+                    return {user: null}
+                })
+        })
+        .onBeforeHandle(({user, status}) => {
+            if (!user) {
+                return status(401, 'You have to be logged in to access')
+            }
+        })
+        .derive(({user}) => ({user: user as AuthorizedUser}))
+        .group('/users', (userRoutes) => userRoutes
+            .get('/me', async ({user}) => {
+                return user
+            })
+        )
+        .get('/survey', ({statisticsService}) => statisticsService.getAllSurveyData())
+        .group('/sadmin', (superAdminRoutes) => superAdminRoutes
+            .onBeforeHandle(({user, status}) => {
+                const {roles} = user
+                if (!roles.includes(SuperAdminRole)) {
+                    return status("Unauthorized")
+                }
+            })
+            .post('/alumniSurvey', async ({body, alumniService}) => {
+                const fileContent = new TextDecoder().decode((await body.file.arrayBuffer()))
+                const parsed = await alumniService.parseSurveyCSV(fileContent)
+                await alumniService.replaceAllSurveyData(parsed)
+            }, {
+                body: t.Object({
+                    file: t.File()
+                }),
+            })
+            .post('/users', async ({body}) => {
+                const {roles, ...userData} = body
+
+                await db.insert(userTable).values(userData).execute()
+                const newUser = await db.query.userTable.findFirst({
+                    where: (userTable, {eq}) => eq(userTable.email, userData.email)
+                })
+
+                for (const role of roles) {
+                    let foundRole = await db.query.roleTable.findFirst({
+                        where: (roleTable, {eq}) => eq(roleTable.name, role)
+                    })
+                    if (!foundRole) {
+                        await db.insert(roleTable).values({name: role}).execute()
+                        foundRole = await db.query.roleTable.findFirst({
+                            where: (roleTable, {eq}) => eq(roleTable.name, role)
+                        })
+                    }
+                    await db.insert(userToRole).values({
+                        userId: newUser!.id,
+                        roleId: foundRole!.id
+                    })
+                }
+            }, {
+                body: t.Object({
+                    name: t.String(),
+                    email: t.String({ format: 'email' }),
+                    status: t.Union(toTypeboxLiteral(UserStatuses)),
+                    roles: t.Array(t.String())
+                })
+            })
+        )
+    )
+    .group('/auth', (authRoutes) => authRoutes
+        .get(('/login/google'), ({googleClient, redirect}) => {
+            return redirect(googleClient.generateGoogleLoginURL())
+        })
+        .get('/callback/google', async ({googleClient, userService, signJWT, query, cookie, redirect}) => {
+            // verify csrf token
+            // name=value url encoded
+            const csrfValue = decodeURIComponent(query.state).split("=")[1]
+            const isCsrfValid = isCSRFTokenValid(csrfValue)
+            if (!isCsrfValid) {
+                return redirect(`${FRONTEND_BASE_URL}/login?error=${encodeURIComponent('CSRF Validation Failed. Try login in the same browser')}`)
+            }
+            const userData = {
+                email: await googleClient.getUserEmail(query.code)
+            }
+            const processedLogin = await userService.processLogin(userData)
+            if (!processedLogin.canLogin) {
+                return redirect(`${FRONTEND_BASE_URL}/login?error=${encodeURIComponent(processedLogin.message)}`)
+            }
+            cookie[USER_JWT_COOKIE_NAME].set({
+                value: await signJWT(processedLogin.user),
+                maxAge: JWT_MAX_AGE_SECONDS,
+                httpOnly: true,
+            })
+            return redirect(`${FRONTEND_BASE_URL}/dashboard`)
+        }, {
+            query: t.Object({
+                state: t.String({pattern: `^${OAUTH_CSRF_PARAM_NAME}=.+`}),
+                code: t.String({minLength: 10})
+            })
+        })
+        .post('/logout', ({set}) => {
+            set.headers['Set-Cookie'] = `${USER_JWT_COOKIE_NAME}=${USER_JWT_COOKIE_DELETED_VALUE}; Max-Age=0; Path=/; HttpOnly`
+            return 'cookie cleared'
+        })
+    )
+    .get("/", () => "Hello Tawasul API")
+
+const app = new Elysia()
+    .use(api)
+    .get('/config.js', ({set}) => {
+        set.headers['Content-Type'] = 'application/javascript'
+        return `window.env = { VITE_API_BASE_URL: "${API_BASE_URL}" };`
+    })
+    .get('*', ({path, set}) => {
+        if (path.endsWith('.js')) {
+            set.headers['Content-Type'] = 'application/javascript'
+            return Bun.file('public' + path)
+        }
+        if (path.endsWith('.css')) {
+            set.headers['Content-Type'] = 'text/css'
+            return Bun.file('public' + path)
+        }
+        if (path.endsWith('.jpg')) {
+            set.headers['Content-Type'] = 'image/jpeg'
+            return Bun.file('public' + path)
+        }
+        set.headers['Content-Type'] = 'text/html'
+        return Bun.file('public/index.html')
+    })
+    .listen(3000);
+
+// for frontend client
+export type Backend = typeof app
+
+console.log(
+    `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+);
+
+function toTypeboxLiteral(strings: Readonly<string[]>) {
+    const schemas = [];
+    for (const str of strings) {
+        schemas.push(t.Literal(str));
+    }
+    return schemas;
+}
+
+type AuthorizedUser = {
+    name: string;
+    email: string;
+    roles: string[];
+}

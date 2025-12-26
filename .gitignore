@@ -1,0 +1,7 @@
+node_modules
+text
+tawasul-app
+.env.docker-compose
+.idea
+.output.txt
+.env

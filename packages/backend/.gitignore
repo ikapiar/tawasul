@@ -1,0 +1,7 @@
+!assets/.gitkeep
+assets/*
+node_modules
+.env
+tawasul-app
+dist
+public

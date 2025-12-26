@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tawasul
+  labels:
+    app: tawasul
+  namespace: tawasul-dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tawasul
+  template:
+    metadata:
+      labels:
+        app: tawasul
+    spec:
+      containers:
+        - name: tawasul
+          image: ghcr.io/ikapiar/tawasul:latest
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - secretRef:
+                name: tawasul-secret
+            - configMapRef:
+                name: tawasul-config
+          resources:
+            requests:
+              memory: 64Mi
+              cpu: 500m
+            limits:
+              memory: 256Mi
+              cpu: 800m

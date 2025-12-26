@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="updates">
+      <change beforePath="$PROJECT_DIR$/packages/backend/tests/alumniService.parse.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/tests/alumniService.replaceAll.test.ts" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="115" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dockerfile" />
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+        <option value="Kubernetes Deployment" />
+        <option value="Kubernetes Service" />
+        <option value="Kubernetes Secret" />
+        <option value="Kubernetes Ingress" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sayyidyofa&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ikapiar/tawasul.git&quot;,
+    &quot;accountId&quot;: &quot;9e9c50bf-38de-4ec2-b743-7fed821cc3db&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;configuredContexts&quot;: [
+    {
+      &quot;name&quot;: &quot;Default&quot;,
+      &quot;kubeConfigUrl&quot;: &quot;file://C:/Users/PC/.kube/config&quot;,
+      &quot;currentNamespace&quot;: &quot;tawasul-dev&quot;
+    }
+  ],
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="36TaXrYtyjaFXcQhfkeqJeQjjue" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Bun.Backend Local.executor&quot;: &quot;Run&quot;,
+    &quot;Bun.index.ts.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.database: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;bun&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Codespace/WebstormProjects/tawasul/packages/frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;bun&quot;,
+    &quot;npm.backend &gt; dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.frontend &gt; build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.frontend &gt; dev.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/sayyidyofa/Codespace/WebstormProjects/tawasul/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;PostgreSQL&quot;
+    ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
+      &quot;PostgreSQL&quot;
+    ]
+  }
+}</component>
+  <component name="RecapSpentCounter">
+    <option name="endsOfQuotaMs" value="1766451606877" />
+    <option name="spentUsd" value="0.0830385" />
+  </component>
+  <component name="RecapUselessUpdatesCounter">
+    <option name="suspendCountdown" value="0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Codespace\WebstormProjects\tawasul\packages\frontend" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Codespace\WebstormProjects\tawasul\deploy\dev" />
+      <recent name="C:\Users\PC\Codespace\WebstormProjects\tawasul\deploy" />
+      <recent name="C:\Users\PC\Codespace\WebstormProjects\tawasul\packages\frontend" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Bun.Backend Local">
+    <configuration name="Backend Local" type="BunRunConfiguration">
+      <option name="program" value="src/index.ts" />
+      <option name="runtimeParameters" value="--env-file=.env" />
+      <option name="workingDirectory" value="$PROJECT_DIR$/packages/backend" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.database: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="database" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="backend &gt; dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/packages/backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="frontend &gt; build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/packages/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="frontend &gt; dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/packages/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Bun.Backend Local" />
+      <item itemvalue="Docker.docker-compose.yml.database: Compose Deployment" />
+      <item itemvalue="npm.frontend &gt; build" />
+      <item itemvalue="npm.backend &gt; dev" />
+      <item itemvalue="npm.frontend &gt; dev" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.frontend &gt; build" />
+        <item itemvalue="npm.frontend &gt; dev" />
+        <item itemvalue="npm.backend &gt; dev" />
+        <item itemvalue="Docker.docker-compose.yml.database: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.29346.143" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="" />
+      <created>1765033058246</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1765033058246</updated>
+      <workItem from="1765033060726" duration="1052000" />
+      <workItem from="1765066555116" duration="1222000" />
+      <workItem from="1765068066178" duration="1675000" />
+      <workItem from="1765073395390" duration="6562000" />
+      <workItem from="1765110495168" duration="7692000" />
+      <workItem from="1765198180875" duration="1906000" />
+      <workItem from="1765236856735" duration="3021000" />
+      <workItem from="1765536784859" duration="2458000" />
+      <workItem from="1765539433047" duration="411000" />
+      <workItem from="1765623260413" duration="798000" />
+      <workItem from="1765625436823" duration="5491000" />
+      <workItem from="1765884897994" duration="173000" />
+      <workItem from="1765885082033" duration="6752000" />
+      <workItem from="1765896749038" duration="692000" />
+      <workItem from="1765935003909" duration="926000" />
+      <workItem from="1765971891829" duration="6388000" />
+      <workItem from="1766020054936" duration="9158000" />
+      <workItem from="1766199481219" duration="7233000" />
+      <workItem from="1766228230787" duration="2165000" />
+      <workItem from="1766274924827" duration="2940000" />
+      <workItem from="1766291792882" duration="7254000" />
+      <workItem from="1766317399810" duration="8527000" />
+      <workItem from="1766368089197" duration="1041000" />
+      <workItem from="1766397542367" duration="315000" />
+      <workItem from="1766397871451" duration="3966000" />
+      <workItem from="1766414323760" duration="2342000" />
+      <workItem from="1766455457397" duration="2812000" />
+      <workItem from="1766714472001" duration="522000" />
+      <workItem from="1766715006989" duration="550000" />
+      <workItem from="1766717049663" duration="1734000" />
+      <workItem from="1766725642960" duration="107000" />
+    </task>
+    <task id="LOCAL-00001" summary="gitignore new">
+      <option name="closed" value="true" />
+      <created>1765069012579</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1765069012579</updated>
+    </task>
+    <task id="LOCAL-00002" summary="rewrite">
+      <option name="closed" value="true" />
+      <created>1765069476734</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1765069476734</updated>
+    </task>
+    <task id="LOCAL-00003" summary="env gitignore">
+      <option name="closed" value="true" />
+      <created>1765069663623</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765069663623</updated>
+    </task>
+    <task id="LOCAL-00004" summary="rewrite">
+      <option name="closed" value="true" />
+      <created>1765069687384</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765069687384</updated>
+    </task>
+    <task id="LOCAL-00005" summary="updates">
+      <option name="closed" value="true" />
+      <created>1765120567344</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1765120567344</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix fetch user in every page">
+      <option name="closed" value="true" />
+      <created>1765536956239</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1765536956239</updated>
+    </task>
+    <task id="LOCAL-00007" summary="bump ver 0.1.1">
+      <option name="closed" value="true" />
+      <created>1765537001741</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1765537001741</updated>
+    </task>
+    <task id="LOCAL-00008" summary="nginx.conf">
+      <option name="closed" value="true" />
+      <created>1765626653779</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1765626653779</updated>
+    </task>
+    <task id="LOCAL-00009" summary="nginx.conf">
+      <option name="closed" value="true" />
+      <created>1765626936356</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1765626936356</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add error message on failed login">
+      <option name="closed" value="true" />
+      <created>1765895356016</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1765895356016</updated>
+    </task>
+    <task id="LOCAL-00011" summary="dockers">
+      <option name="closed" value="true" />
+      <created>1765973360885</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1765973360885</updated>
+    </task>
+    <task id="LOCAL-00012" summary="dockers, update deps">
+      <option name="closed" value="true" />
+      <created>1765975407431</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1765975407431</updated>
+    </task>
+    <task id="LOCAL-00013" summary="complete the upload survey result feature, fix login user roles">
+      <option name="closed" value="true" />
+      <created>1766213415861</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1766213415861</updated>
+    </task>
+    <task id="LOCAL-00014" summary="0.2.0 bump version">
+      <option name="closed" value="true" />
+      <created>1766213455604</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1766213455604</updated>
+    </task>
+    <task id="LOCAL-00015" summary="workflow: update image">
+      <option name="closed" value="true" />
+      <created>1766292264017</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1766292264017</updated>
+    </task>
+    <task id="LOCAL-00016" summary="workflow: unified docker image">
+      <option name="closed" value="true" />
+      <created>1766296880904</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1766296880904</updated>
+    </task>
+    <task id="LOCAL-00017" summary="rapiin">
+      <option name="closed" value="true" />
+      <created>1766297394872</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1766297394872</updated>
+    </task>
+    <task id="LOCAL-00018" summary="docs">
+      <option name="closed" value="true" />
+      <created>1766307470334</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1766307470334</updated>
+    </task>
+    <task id="LOCAL-00019" summary="deploy pipeline">
+      <option name="closed" value="true" />
+      <created>1766329750894</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1766329750894</updated>
+    </task>
+    <task id="LOCAL-00020" summary="jwt keypair base64">
+      <option name="closed" value="true" />
+      <created>1766330482520</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1766330482520</updated>
+    </task>
+    <task id="LOCAL-00021" summary="0.3.0 security update (jwt base64) and versioning and version bump">
+      <option name="closed" value="true" />
+      <created>1766369000720</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1766369000720</updated>
+    </task>
+    <task id="LOCAL-00022" summary="add image housekeeping step and update kustomization.yaml">
+      <option name="closed" value="true" />
+      <created>1766400044657</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1766400044657</updated>
+    </task>
+    <task id="LOCAL-00023" summary="remove image housekeeping">
+      <option name="closed" value="true" />
+      <created>1766402847726</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1766402847726</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fix wg">
+      <option name="closed" value="true" />
+      <created>1766403795881</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1766403795881</updated>
+    </task>
+    <task id="LOCAL-00025" summary="fix wg">
+      <option name="closed" value="true" />
+      <created>1766414655943</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1766414655943</updated>
+    </task>
+    <task id="LOCAL-00026" summary="fix wg">
+      <option name="closed" value="true" />
+      <created>1766415112745</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1766415112745</updated>
+    </task>
+    <task id="LOCAL-00027" summary="fix wg">
+      <option name="closed" value="true" />
+      <created>1766415429232</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1766415429232</updated>
+    </task>
+    <task id="LOCAL-00028" summary="fix pipeline">
+      <option name="closed" value="true" />
+      <created>1766415696919</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1766415696919</updated>
+    </task>
+    <task id="LOCAL-00029" summary="update docs">
+      <option name="closed" value="true" />
+      <created>1766416183863</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1766416183863</updated>
+    </task>
+    <task id="LOCAL-00030" summary="add curl">
+      <option name="closed" value="true" />
+      <created>1766455802427</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1766455802427</updated>
+    </task>
+    <task id="LOCAL-00031" summary="add curl">
+      <option name="closed" value="true" />
+      <created>1766456219600</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1766456219600</updated>
+    </task>
+    <task id="LOCAL-00032" summary="updates">
+      <option name="closed" value="true" />
+      <created>1766724837527</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1766724837527</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="env gitignore" />
+    <MESSAGE value="rewrite" />
+    <MESSAGE value="fix fetch user in every page" />
+    <MESSAGE value="bump ver 0.1.1" />
+    <MESSAGE value="nginx.conf" />
+    <MESSAGE value="add error message on failed login" />
+    <MESSAGE value="dockers" />
+    <MESSAGE value="dockers, update deps" />
+    <MESSAGE value="complete the upload survey result feature, fix login user roles" />
+    <MESSAGE value="0.2.0 bump version" />
+    <MESSAGE value="workflow: update image" />
+    <MESSAGE value="workflow: unified docker image" />
+    <MESSAGE value="rapiin" />
+    <MESSAGE value="docs" />
+    <MESSAGE value="deploy pipeline" />
+    <MESSAGE value="jwt keypair base64" />
+    <MESSAGE value="0.3.0 security update (jwt base64) and versioning and version bump" />
+    <MESSAGE value="add image housekeeping step and update kustomization.yaml" />
+    <MESSAGE value="remove image housekeeping" />
+    <MESSAGE value="fix wg" />
+    <MESSAGE value="fix pipeline" />
+    <MESSAGE value="update docs" />
+    <MESSAGE value="update gitignore" />
+    <MESSAGE value="add curl" />
+    <MESSAGE value="updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+  </component>
+</project>

@@ -1,0 +1,23 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+// import path module for absolute paths
+import * as path from 'path'; //
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: true,
+  },
+  server: {
+    port: 5173,
+    open: true,
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'), // Alias '@' to the 'src' directory
+    },
+  },
+})

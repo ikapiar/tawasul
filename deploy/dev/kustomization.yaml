@@ -1,0 +1,44 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+
+secretGenerator:
+  - name: tawasul-secret
+    namespace: tawasul-dev
+    envs:
+      - secrets.env
+
+configMapGenerator:
+  - name: tawasul-config
+    namespace: tawasul-dev
+    envs:
+      - config.env
+
+replacements:
+  - source:
+      kind: ConfigMap
+      name: tawasul-config
+      fieldPath: data.APP_IMAGE_REFERENCE
+    targets:
+      - select:
+          kind: Deployment
+          name: tawasul
+        fieldPaths:
+          - spec.template.spec.containers.[name=tawasul].image
+  - source:
+      kind: ConfigMap
+      name: tawasul-config
+      fieldPath: data.APP_HOSTNAME
+    targets:
+      - select:
+          kind: Ingress
+          name: tawasul
+        fieldPaths:
+          - spec.rules.[host=tawasul.tawasul-dev.svc.cluster.local].host
+
+generatorOptions:
+  disableNameSuffixHash: true
