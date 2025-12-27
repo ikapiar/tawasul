@@ -17,6 +17,10 @@ export class StatisticsService implements IStatisticsService {
     }
 
     getAlumniSurvey = async () => {
-        return (await this.apiClient.authorized.survey.get()).data!
+        return (await this.apiClient.authorized.statistics.survey.get()).data!
+    }
+
+    getAngkatanData = async () => {
+        return (await this.apiClient.authorized.statistics.angkatan.get()).data!
     }
 }

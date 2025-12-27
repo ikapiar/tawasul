@@ -13,6 +13,7 @@ export const angkatanTable = pgTable('angkatan', {
     memberCount: integer().notNull().default(0),
     category: AngkatanCategoryEnum(),
 })
+export type Angkatan = typeof angkatanTable.$inferSelect
 
 export const angkatanRelations = relations(angkatanTable, ({ many }) => ({
     alumnis: many(alumniTable)

@@ -97,7 +97,10 @@ const api = new Elysia({prefix})
                 return user
             })
         )
-        .get('/survey', ({statisticsService}) => statisticsService.getAllSurveyData())
+        .group('/statistics', statisticsRoute => statisticsRoute
+            .get('/survey', ({statisticsService}) => statisticsService.getAllSurveyData())
+            .get('/angkatan', ({statisticsService}) => statisticsService.getAngkatanData())
+        )
         .group('/sadmin', (superAdminRoutes) => superAdminRoutes
             .onBeforeHandle(({user, status}) => {
                 const {roles} = user

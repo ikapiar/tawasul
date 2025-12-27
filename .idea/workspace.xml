@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="updates">
-      <change beforePath="$PROJECT_DIR$/packages/backend/tests/alumniService.parse.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/tests/alumniService.replaceAll.test.ts" beforeDir="false" />
+    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="0.5.0 add chart to home dashboard">
+      <change afterPath="$PROJECT_DIR$/packages/frontend/src/components/charts/AlumniStatusPie.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/frontend/src/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/db/schemas/alumniSurvey.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/db/schemas/alumniSurvey.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/db/schemas/angkatan.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/db/schemas/angkatan.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/services/AlumniService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/services/AlumniService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/services/StatisticsService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/services/StatisticsService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/pages/dashboard/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/pages/dashboard/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/services/stats.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/services/stats.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/services/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/services/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,12 +34,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Dockerfile" />
-        <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
         <option value="Kubernetes Deployment" />
         <option value="Kubernetes Service" />
         <option value="Kubernetes Secret" />
         <option value="Kubernetes Ingress" />
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -127,7 +140,7 @@
       <recent name="C:\Users\PC\Codespace\WebstormProjects\tawasul\packages\frontend" />
     </key>
   </component>
-  <component name="RunManager" selected="Bun.Backend Local">
+  <component name="RunManager" selected="npm.frontend &gt; dev">
     <configuration name="Backend Local" type="BunRunConfiguration">
       <option name="program" value="src/index.ts" />
       <option name="runtimeParameters" value="--env-file=.env" />
@@ -192,8 +205,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.frontend &gt; build" />
         <item itemvalue="npm.frontend &gt; dev" />
+        <item itemvalue="npm.frontend &gt; build" />
         <item itemvalue="npm.backend &gt; dev" />
         <item itemvalue="Docker.docker-compose.yml.database: Compose Deployment" />
       </list>
@@ -519,7 +532,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="env gitignore" />
     <MESSAGE value="rewrite" />
     <MESSAGE value="fix fetch user in every page" />
     <MESSAGE value="bump ver 0.1.1" />
@@ -544,6 +556,7 @@
     <MESSAGE value="update gitignore" />
     <MESSAGE value="add curl" />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="0.5.0 add chart to home dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.5.0 add chart to home dashboard" />
   </component>
 </project>

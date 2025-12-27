@@ -3,7 +3,7 @@ import { parse } from "csv-parse";
 import dayjs from "dayjs";
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import {AlumniFormValue} from "../db/schemas";
-import {Angkatans} from "../constants";
+import {AngkatanNames} from "../constants";
 
 // Enable parsing with custom format strings (e.g., DD/MM/YYYY H:mm:ss)
 dayjs.extend(customParseFormat);
@@ -38,7 +38,7 @@ export class AlumniService {
         for (const csvValue of parsedCSV) {
             const {Timestamp, 'Nama Lengkap': namaLengkap, Angkatan: rawAngaktan, 'Nomor Kontak': nomorKontak, Email: email, ...formValues} = csvValue
             const timestamp = dayjs(Timestamp as string, 'DD/MM/YYYY H:mm:ss').toDate()
-            const angkatan = Angkatans.find(agkt => rawAngaktan.toString().toLowerCase().includes(agkt.toLowerCase()))!
+            const angkatan = AngkatanNames.find(agkt => rawAngaktan.toString().toLowerCase().includes(agkt.toLowerCase()))!
             await db.insert(alumniSurveyTable).values({
                 timestamp,
                 namaLengkap: namaLengkap as string,

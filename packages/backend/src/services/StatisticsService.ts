@@ -23,4 +23,6 @@ export class StatisticsService {
             }
         }))
     }
+
+    public getAngkatanData = async () => this.dbClient.query.angkatanTable.findMany().execute()
 }

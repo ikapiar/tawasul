@@ -1,11 +1,11 @@
 import { pgTable, timestamp, varchar, json, serial } from "drizzle-orm/pg-core";
-import {Angkatan} from "../../constants";
+import {AngkatanName} from "../../constants";
 
 export const alumniSurveyTable = pgTable("alumniSurvey", {
     id: serial().primaryKey(),
     timestamp: timestamp('timestamp', { withTimezone: true, mode: "date" }).notNull().defaultNow(),
     namaLengkap: varchar({ length: 255 }).notNull(),
-    angkatan: varchar({ length: 255 }).notNull().$type<Angkatan>(),
+    angkatan: varchar({ length: 255 }).notNull().$type<AngkatanName>(),
     nomorKontak: varchar({ length: 255 }).notNull(),
     email: varchar({ length: 255 }).notNull(),
     formValues: json().$type<AlumniFormValue>().notNull()
@@ -83,7 +83,7 @@ export const ProfessionalStatuses = [
     'S2', 'Pendidikan Profesi', // Pendidikan Lanjutan
     'S3', 'Spesialis', // Pendidikan Lanjutan (Khusus S3)
     'KULIAH', 'BEKERJA', 'KURSUS/DIKLAT', 'SEDANG MENCARI KERJA' // Aktifitas Terkini
-]
+] as const
 export type ProfessionalStatus = typeof ProfessionalStatuses[number]
 
 export const PostgradFundings = [

@@ -1,5 +1,6 @@
 import {AuthorizedUser} from "backend/src/services/UserService";
 import type { StatisticsService } from "backend/src/services/StatisticsService";
+import {Angkatan} from "backend/src/db/schemas";
 
 export interface IAuthService {
     getCurrentUser(): Promise<AuthorizedUser | null>
@@ -10,6 +11,7 @@ export interface IStatisticsService {
     getSummaryStats(): Promise<SummaryStats>
     uploadSurveyData(csvFile: File): Promise<void>
     getAlumniSurvey(): Promise<AlumniSurvey[]>
+    getAngkatanData(): Promise<Angkatan[]>
 }
 
 export type SummaryStats = {
