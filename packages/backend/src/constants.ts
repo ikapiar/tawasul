@@ -4,7 +4,7 @@ export const AlumniRole = 'Alumni' as const;
 export const ApproverRoles = [SuperAdminRole, AdminAngkatanRole] as const
 export type ApproverRole = typeof ApproverRoles[number];
 
-export const AngkatanNames = ['Rais', 'Radar', 'Sahabat', 'Fortgas', 'Brave', 'Jaisyu', 'Aizen', 'Elegant', 'Renaissance', 'Nesil On', 'Vollmound'] as const
+export const AngkatanNames = ['Rais', 'Radar', 'Sahabat', 'Fortgas', 'Brave', 'Jaisyu', 'Aizen', 'Elegant', 'Renaissance', 'Nesil On', 'Vollmound', 'Xaviour', 'Alter', 'Verwalten', 'Endeavor'] as const
 export type AngkatanName = typeof AngkatanNames[number];
 
 export const Genders = ['Laki-laki', 'Perempuan'] as const

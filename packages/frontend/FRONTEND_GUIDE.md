@@ -24,6 +24,7 @@ Auth flow (Google only):
 ```
 src/
   components/
+    charts/        # Recharts-based visualization components
     ui/            # shadcn-style primitives (button, input, card, badge, ...)
   layouts/         # page shells (MainLayout, AuthLayout, DashboardLayout)
   lib/             # shared utilities (e.g., cn())
@@ -79,8 +80,72 @@ For feature-specific components, use `src/components/<feature>/...`.
 - Avoid inline styles unless necessary
 - Use `buttonVariants` to style links as buttons for consistent CTA styling
 
+#### Charts
+We use [Recharts](https://recharts.org/) for data visualization, integrated with shadcn-style chart components found in `src/components/ui/chart.tsx`.
+
+To create a new chart:
+1.  **Create the chart component**: Place it in `src/components/charts/`.
+2.  **Define the config**: Use `ChartConfig` to map data keys to labels and colors.
+3.  **Use `ChartContainer`**: Wrap your `recharts` components (e.g., `PieChart`, `BarChart`) with `ChartContainer` from `@/components/ui/chart`.
+4.  **Wrap in a Card**: For consistency, wrap the chart in a `Card` component from `src/components/ui/card.tsx`.
+
+Example:
+```tsx
+import { Pie, PieChart } from "recharts"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ChartContainer, ChartConfig, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+
+const chartConfig: ChartConfig = {
+  alumniCount: { label: "Alumni" },
+  active: { label: "Active", color: "hsl(var(--chart-1))" },
+}
+
+export function MyChart({ data }) {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Alumni Activity</CardTitle>
+        <CardDescription>Description</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <ChartContainer config={chartConfig}>
+          <PieChart>
+            <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+            <Pie data={data} dataKey="alumniCount" nameKey="status" />
+          </PieChart>
+        </ChartContainer>
+      </CardContent>
+    </Card>
+  )
+}
+```
+
+To add a chart to a page:
+1.  Import your chart component.
+2.  Pass the necessary data (typically fetched from a service in `useEffect`).
+3.  Place it within the page content, usually inside another grid or container for layout.
+
+```tsx
+import { AlumniStatusPie } from "@/components/charts/AlumniStatusPie"
+
+export default function DashboardHome() {
+  const [surveyData, setSurveyData] = useState([])
+  // ... fetch surveyData from statisticsService ...
+  return (
+    <div className="space-y-6">
+      <Card>
+          <CardHeader><CardTitle>Statistics</CardTitle></CardHeader>
+          <CardContent>
+              <AlumniStatusPie props={{ alumniStatuses: surveyData.map(s => s.formValues.Status) }} />
+          </CardContent>
+      </Card>
+    </div>
+  )
+}
+```
+
 #### Future features and directions
-- Dashboard charts (on `/dashboard`): consider adding `recharts` or `react-chartjs-2` when ready. Keep it tree-shakeable and lazy-load heavy chart libs.
+- Dashboard charts: Expand the variety of charts (Bar, Line) to visualize more survey data dimensions.
 - Landing content (on `/`): replace the static “Latest from alumni” with content from the backend using `ContentService`.
 
 #### Code quality
