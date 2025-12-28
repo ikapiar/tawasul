@@ -9,7 +9,7 @@ export function telemetry() {
         Sentry.init({
             dsn: SENTRY_DSN,
             environment: SENTRY_ENVIRONMENT,
-            integrations: [Sentry.bunServerIntegration()],
+            integrations: [Sentry.bunServerIntegration(), Sentry.postgresIntegration()],
             serverName: SENTRY_DEVICE_NAME
         });
         return new Elysia()
