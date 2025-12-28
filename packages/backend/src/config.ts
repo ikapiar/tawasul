@@ -32,3 +32,5 @@ export const API_BASE_URL = process.env.API_BASE_URL ?? 'http://localhost:3000'
 // telemetry
 export const SENTRY_DSN = process.env.SENTRY_DSN
 export const SENTRY_ENVIRONMENT = process.env.SENTRY_ENVIRONMENT ?? 'development'
+export const SENTRY_DEVICE_NAME = process.env.SENTRY_DEVICE_NAME ?? process.env.HOSTNAME ?? 'localhost'
+export const LOG_LEVEL = process.env.LOG_LEVEL ?? 'info'

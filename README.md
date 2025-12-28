@@ -103,6 +103,8 @@ The frontend will start at `http://localhost:5173`.
 | `API_BASE_URL` | No | `http://localhost:3000` | The base URL for the backend API |
 | `SENTRY_DSN` | No | (unset) | Sentry Data Source Name (DSN) for telemetry |
 | `SENTRY_ENVIRONMENT` | No | `development` | Sentry environment name |
+| `SENTRY_DEVICE_NAME` | No | `localhost` | Sentry server name (defaults to HOSTNAME or localhost) |
+| `LOG_LEVEL` | No | `info` | Minimum log level (info, debug, warn, error) |
 
 ### Frontend (`packages/frontend/.env`)
 

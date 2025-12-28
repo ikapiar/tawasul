@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="0.8.0 add telemetry">
+    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="update docs">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/backend/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/backend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/logger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/logger.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/telemetry.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/telemetry.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -545,7 +551,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766899194550</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="update docs">
+      <option name="closed" value="true" />
+      <created>1766899616805</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1766899616805</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +594,6 @@
     <MESSAGE value="remove image housekeeping" />
     <MESSAGE value="fix wg" />
     <MESSAGE value="fix pipeline" />
-    <MESSAGE value="update docs" />
     <MESSAGE value="update gitignore" />
     <MESSAGE value="add curl" />
     <MESSAGE value="updates" />
@@ -588,6 +601,7 @@
     <MESSAGE value="0.6.0 fix csv upload, update docs" />
     <MESSAGE value="0.7.0 fix login process" />
     <MESSAGE value="0.8.0 add telemetry" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.8.0 add telemetry" />
+    <MESSAGE value="update docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="update docs" />
   </component>
 </project>

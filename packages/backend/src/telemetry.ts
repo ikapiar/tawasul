@@ -1,5 +1,5 @@
 import * as Sentry from "@sentry/bun";
-import {SENTRY_DSN, SENTRY_ENVIRONMENT} from "./config";
+import {SENTRY_DEVICE_NAME, SENTRY_DSN, SENTRY_ENVIRONMENT} from "./config";
 import {logger} from "./logger";
 import {Elysia} from "elysia";
 import {opentelemetry} from "@elysiajs/opentelemetry";
@@ -9,7 +9,8 @@ export function telemetry() {
         Sentry.init({
             dsn: SENTRY_DSN,
             environment: SENTRY_ENVIRONMENT,
-            integrations: [Sentry.bunServerIntegration()]
+            integrations: [Sentry.bunServerIntegration()],
+            serverName: SENTRY_DEVICE_NAME
         });
         return new Elysia()
             .use(opentelemetry())
