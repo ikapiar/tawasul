@@ -32,11 +32,13 @@ export async function generateSigner() {
 	const privateKey = await importPKCS8(decodedPrivateKey, JWT_ALGORITHM);
 	const encodeBase64 = (str: string) => Buffer.from(str).toString('base64');
     const signer = new SignJWT({alg: JWT_ALGORITHM});
-	return async (payload: AuthorizedUser) => signer
-        .setExpirationTime(Math.floor(Date.now()/1000) + JWT_MAX_AGE_SECONDS)
-        .setSubject(encodeBase64(JSON.stringify(payload)))
-        .setProtectedHeader({alg: JWT_ALGORITHM})
-        .sign(privateKey);
+	return async (payload: AuthorizedUser) => {
+		return signer
+			.setExpirationTime(Math.floor(Date.now()/1000) + JWT_MAX_AGE_SECONDS)
+			.setSubject(encodeBase64(JSON.stringify(payload)))
+			.setProtectedHeader({alg: JWT_ALGORITHM})
+			.sign(privateKey)
+	};
 }
 
 export async function generateVerifier() {

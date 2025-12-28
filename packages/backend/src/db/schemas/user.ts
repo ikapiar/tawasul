@@ -12,6 +12,8 @@ export const userTable = pgTable('users', {
     status: userStatusEnum().notNull()
 })
 
+export type User = typeof userTable.$inferSelect
+
 export const userRelations = relations(userTable, ({many}) => ({
     roles: many(userToRole)
 }))

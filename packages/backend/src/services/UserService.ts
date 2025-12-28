@@ -1,10 +1,19 @@
 import {Elysia} from "elysia";
 import {UserData} from "../plugins/security";
 import {db} from "../db";
-import {eq, ilike} from "drizzle-orm";
+import {eq} from "drizzle-orm";
 import {AlumniRole, CanLoginUserStatus, CanLoginUserStatuses} from "../constants";
 import {IKAPIAR_ADMIN_EMAIL} from "../config";
-import {userTable, alumniTable, alumniSurveyTable, angkatanTable, roleTable, userToRole} from "../db/schemas";
+import {
+    userTable,
+    alumniTable,
+    alumniSurveyTable,
+    angkatanTable,
+    roleTable,
+    userToRole,
+    User,
+    Alumni, AlumniSurvey
+} from "../db/schemas";
 
 export class UserService {
 
@@ -16,95 +25,76 @@ export class UserService {
 
     public processLogin = async (userData: UserData): Promise<ProcessedLogin> => {
         // check if logged-in user already exists
-        const foundUser = await db.select()
-            .from(userTable)
-            .where(eq(userTable.email, userData.email))
-            .limit(1)
-            .execute()
+        const foundUser = await this.getUserByEmail(userData.email)
         // if user not exist, check email in alumni table
-        if (foundUser.length !== 1) {
-            const foundAlumni = await db.select()
-                .from(alumniTable)
-                .where(eq(alumniTable.email, userData.email))
-                .limit(1).execute()
+        if (!foundUser) {
+            const foundAlumni = await this.getAlumniByEmail(userData.email)
             // if not found in alumni, check if alumni data is in survey form
-            if (foundAlumni.length !== 1) {
-                // if not found, onboard alumni, at the end alumni is to be told to wait for approval
-                const foundAlumniSurvey = await db.select()
-                    .from(alumniSurveyTable)
-                    .where(eq(alumniSurveyTable.email, userData.email))
-                    .limit(1)
-                    .execute()
-                if (foundAlumniSurvey.length !== 1) {
+            if (!foundAlumni) {
+                const foundAlumniSurvey = await this.getAlumniSurveyByEmail(userData.email)
+                if (!foundAlumniSurvey) {
                     return {
                         user: { email: '', roles: []},
                         canLogin: false,
                         message: `Data anda (${userData.email}) tidak ditemukan dalam database alumni IKAPIAR. Harap hubungi ketua angkatan atau admin IKAPIAR (${IKAPIAR_ADMIN_EMAIL})`
                     }
                 }
-                // if found in survey, fill data into alumni table and user table, auto approve, status active
-                const surveyData = foundAlumniSurvey[0]
-                const foundAngkatan = await db.select().from(angkatanTable).where(ilike(angkatanTable.name, surveyData.angkatan)).limit(1).execute()
-                if (foundAngkatan.length !== 1) {
+                // make sure angkatan name is valid from the survey data
+                const foundAngkatan = await db.query.angkatanTable.findFirst({where: eq(angkatanTable.name, foundAlumniSurvey.angkatan)}).execute()
+                if (!foundAngkatan) {
                     return {
                         user: { email: '', roles: []},
                         canLogin: false,
-                        message: `Data anda (${userData.email}) ditemukan dalam database alumni, namun nama angakatan invalid (${surveyData.angkatan}). Harap pastikan kembali data yang anda isi di survey alumni dan kontak admin ikapiar (${IKAPIAR_ADMIN_EMAIL})`
+                        message: `Data anda (${userData.email}) ditemukan dalam database alumni, namun nama angkatan invalid (${foundAlumniSurvey.angkatan}). Harap pastikan kembali data yang anda isi di survey alumni dan kontak admin ikapiar (${IKAPIAR_ADMIN_EMAIL})`
                     }
                 }
-                const gender = foundAngkatan[0].category === 'putra' ? 'Laki-laki' : 'Perempuan'
+                // if found in survey, fill data into alumni table and user table, auto approve, status active
+                const gender = foundAngkatan.category === 'putra' ? 'Laki-laki' : 'Perempuan'
                 await db.insert(alumniTable).values({
-                    name: surveyData.namaLengkap,
-                    email: surveyData.email,
-                    phone: surveyData.nomorKontak,
+                    name: foundAlumniSurvey.namaLengkap,
+                    email: foundAlumniSurvey.email,
+                    phone: foundAlumniSurvey.nomorKontak,
                     gender,
-                    angkatanId: foundAngkatan[0].id,
+                    angkatanId: foundAngkatan.id,
                 }).execute()
-                await db.insert(userTable).values({
-                    name: surveyData.namaLengkap,
-                    email: surveyData.email,
+                const [{id: userId}] = await db.insert(userTable).values({
+                    name: foundAlumniSurvey.namaLengkap,
+                    email: foundAlumniSurvey.email,
                     status: 'Active'
-                }).execute()
+                }).returning()
+                const roles = await this.linkUserRole(userId, AlumniRole)
                 return {
-                    user: { email: '', roles: []},
+                    user: { email: foundAlumniSurvey.email, roles},
                     canLogin: true,
                     message: 'ok'
                 }
             }
             // if user found in alumni, populate user data from alumni table and accept the login
-            const alumniData = foundAlumni[0]
-            await db.insert(userTable).values({
-                name: alumniData.name,
-                email: alumniData.email,
+            const [{id: userId}] = await db.insert(userTable).values({
+                name: foundAlumni.name,
+                email: foundAlumni.email,
                 status: 'Approved'
-            }).execute()
-            // check if the role "Alumni" exists
-            let foundAlumniRole = await db.query.roleTable.findFirst({where: eq(roleTable.name, AlumniRole)})
-            // insert if not
-            if (!foundAlumniRole) {
-                await db.insert(roleTable).values({name: AlumniRole}).execute()
-                foundAlumniRole = await db.query.roleTable.findFirst({where: eq(roleTable.name, AlumniRole)})
-            }
-            // insert many-to-many relationship between user and role
-            await db.insert(userToRole).values({userId: foundUser[0].id, roleId: foundAlumniRole!.id}).execute()
+            }).returning()
+            // link user to alumni role
+            const roles = await this.linkUserRole(userId, AlumniRole)
             return {
-                user: { email: alumniData.email, roles: [foundAlumniRole!.name]},
+                user: { email: foundAlumni.email, roles},
                 canLogin: true,
                 message: 'ok'
             }
         }
         // if found in users, check if user can log in (CanLoginUserStatus)
         // if user can not log in, reject the login, tell the user status and user should reach out to admins
-        if (!CanLoginUserStatuses.includes(foundUser[0].status as CanLoginUserStatus)) {
+        if (!CanLoginUserStatuses.includes(foundUser.status as CanLoginUserStatus)) {
             return {
                 user: { email: userData.email, roles: []},
                 canLogin: false,
-                message: `Akun anda ditemukan, namun dalam status ${foundUser[0].status}. Harap hubungi admin ikapiar ${IKAPIAR_ADMIN_EMAIL}`,
+                message: `Akun anda ditemukan, namun dalam status ${foundUser.status}. Harap hubungi admin ikapiar ${IKAPIAR_ADMIN_EMAIL}`,
             }
         }
         // if user can log in, accept the login
         // get user roles
-        const roleRelations = await db.select().from(userToRole).where(eq(userToRole.userId, foundUser[0].id)).execute()
+        const roleRelations = await db.select().from(userToRole).where(eq(userToRole.userId, foundUser.id)).execute()
         const maybeRoles = roleRelations.map(
             async ({roleId}) => await db.query.roleTable.findFirst({where: eq(roleTable.id, roleId)}).execute()
         )
@@ -114,6 +104,33 @@ export class UserService {
             canLogin: true,
             message: 'ok'
         }
+    }
+
+    private getUserByEmail = async (email: string): Promise<User | undefined> => {
+        return await db.query.userTable.findFirst({where: eq(userTable.email, email)}).execute()
+    }
+
+    private getAlumniByEmail = async (email: string): Promise<Alumni | undefined> => {
+        return await db.query.alumniTable.findFirst({where: eq(alumniTable.email, email)}).execute()
+    }
+
+    private getAlumniSurveyByEmail = async (email: string): Promise<AlumniSurvey | undefined> => {
+        return await db.query.alumniSurveyTable.findFirst({where: eq(alumniSurveyTable.email, email)}).execute()
+    }
+
+    private linkUserRole = async <T extends string>(userId: number, ...roleNames: T[]) => {
+        for (const roleName of roleNames) {
+            // check if the role exists
+            let foundRole = await db.query.roleTable.findFirst({where: eq(roleTable.name, roleName)})
+            // insert if not
+            if (!foundRole) {
+                await db.insert(roleTable).values({name: roleName}).execute()
+                foundRole = await db.query.roleTable.findFirst({where: eq(roleTable.name, roleName)})
+            }
+            // insert many-to-many relationship between user and role
+            await db.insert(userToRole).values({userId, roleId: foundRole!.id}).execute()
+        }
+        return roleNames
     }
 }
 

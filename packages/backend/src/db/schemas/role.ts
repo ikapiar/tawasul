@@ -8,7 +8,7 @@ export const roleTable = pgTable('roles', {
 })
 
 export const userToRole = pgTable("userToRole", {
-    userId: integer().notNull().references(() => userTable.id),
+    userId: integer().notNull().references(() => userTable.id, {onDelete: 'cascade', onUpdate: 'cascade'}),
     roleId: integer().notNull().references(() => roleTable.id),
 }, (t) => [primaryKey({ columns: [t.userId, t.roleId] })]);
 

@@ -15,6 +15,13 @@
       "when": 1766713747726,
       "tag": "0001_aberrant_rage",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1766882420711,
+      "tag": "0002_third_electro",
+      "breakpoints": true
     }
   ]
 }

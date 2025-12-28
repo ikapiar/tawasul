@@ -11,6 +11,8 @@ export const alumniSurveyTable = pgTable("alumniSurvey", {
     formValues: json().$type<AlumniFormValue>().notNull()
 })
 
+export type AlumniSurvey = typeof alumniSurveyTable.$inferSelect
+
 export const AlumniStatuses = ['Tamat 3 MA Ar Risalah', 'Kelas 1 - 3 SMP / 1 - 2 MA Ar Risalah'] as const
 export type AlumniStatus = typeof AlumniStatuses[number];
 

@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="0.5.0 add chart to home dashboard">
+    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="0.6.0 fix csv upload, update docs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/src/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/drizzle/meta/_journal.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/drizzle/meta/_journal.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/db/schemas/alumni.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/db/schemas/alumni.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/db/schemas/alumniSurvey.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/db/schemas/alumniSurvey.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/db/schemas/role.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/db/schemas/role.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/db/schemas/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/db/schemas/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/plugins/security.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/plugins/security.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/services/UserService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/services/UserService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -512,7 +515,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766841166292</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="0.6.0 fix csv upload, update docs">
+      <option name="closed" value="true" />
+      <created>1766881066539</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1766881066539</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -530,7 +541,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rewrite" />
     <MESSAGE value="fix fetch user in every page" />
     <MESSAGE value="bump ver 0.1.1" />
     <MESSAGE value="nginx.conf" />
@@ -555,6 +565,25 @@
     <MESSAGE value="add curl" />
     <MESSAGE value="updates" />
     <MESSAGE value="0.5.0 add chart to home dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.5.0 add chart to home dashboard" />
+    <MESSAGE value="0.6.0 fix csv upload, update docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.6.0 fix csv upload, update docs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/packages/backend/src/plugins/security.ts</url>
+          <line>35</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/packages/backend/src/index.ts</url>
+          <line>168</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

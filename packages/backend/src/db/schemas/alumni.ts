@@ -14,6 +14,8 @@ export const alumniTable = pgTable('alumni', {
     angkatanId: integer().notNull(),
 })
 
+export type Alumni = typeof alumniTable.$inferSelect
+
 export const alumniRelations = relations(alumniTable, ({ one }) => ({
     angkatan: one(angkatanTable, {
         fields: [alumniTable.angkatanId],
