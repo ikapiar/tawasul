@@ -87,6 +87,7 @@ jobs:
         echo FRONTEND_BASE_URL=${{ secrets.FRONTEND_BASE_URL }} >> ./deploy/dev/secrets.env
         echo "IKAPIAR_ADMIN_EMAIL=${{ secrets.IKAPIAR_ADMIN_EMAIL }}" >> ./deploy/dev/secrets.env
         echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> ./deploy/dev/secrets.env
+        echo "SENTRY_ENVIRONMENT=${{ secrets.SENTRY_ENVIRONMENT }}" >> ./deploy/dev/secrets.env
         echo APP_ENV=dev >> ./deploy/dev/secrets.env
       shell: bash
     - name: Deploy to K8s
