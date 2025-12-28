@@ -1,4 +1,4 @@
-import {Elysia, t} from "elysia";
+import {Elysia, t, sse} from "elysia";
 import {createSecurityPlugin, isCSRFTokenValid} from "./plugins/security";
 import {
     API_BASE_URL,
@@ -110,10 +110,19 @@ const api = new Elysia({prefix})
                     return status("Unauthorized")
                 }
             })
-            .post('/alumniSurvey', async ({body, alumniService}) => {
+            .post('/alumniSurvey', async function* ({body, alumniService}) {
                 const fileContent = new TextDecoder().decode((await body.file.arrayBuffer()))
                 const parsed = await alumniService.parseSurveyCSV(fileContent)
-                await alumniService.replaceAllSurveyData(parsed)
+                const iterator = alumniService.replaceAllSurveyData(parsed)
+                for await (const progress of iterator) {
+                    yield sse({
+                        event: 'message',
+                        data: progress
+                    })
+                }
+                yield sse({
+                    event: 'done',
+                })
             }, {
                 body: t.Object({
                     file: t.File()

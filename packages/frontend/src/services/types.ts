@@ -1,6 +1,7 @@
 import {AuthorizedUser} from "backend/src/services/UserService";
 import type { StatisticsService } from "backend/src/services/StatisticsService";
 import {Angkatan} from "backend/src/db/schemas";
+import {UploadProgress} from "backend/src/services/AlumniService";
 
 export interface IAuthService {
     getCurrentUser(): Promise<AuthorizedUser | null>
@@ -9,7 +10,7 @@ export interface IAuthService {
 
 export interface IStatisticsService {
     getSummaryStats(): Promise<SummaryStats>
-    uploadSurveyData(csvFile: File): Promise<void>
+    uploadSurveyData(csvFile: File): Promise<{data: AsyncGenerator<{event: 'message', data: UploadProgress} | {event: 'done'}> | null, error: {status: number, value: unknown} | null}>
     getAlumniSurvey(): Promise<AlumniSurvey[]>
     getAngkatanData(): Promise<Angkatan[]>
 }

@@ -2,13 +2,18 @@ import {Elysia} from "elysia";
 import { parse } from "csv-parse";
 import dayjs from "dayjs";
 import customParseFormat from 'dayjs/plugin/customParseFormat';
-import {AlumniFormValue} from "../db/schemas";
+import {AlumniFormValue, alumniSurveyTable} from "../db/schemas";
 import {AngkatanNames} from "../constants";
+import {db} from "../db";
 
 // Enable parsing with custom format strings (e.g., DD/MM/YYYY H:mm:ss)
 dayjs.extend(customParseFormat);
 
 export class AlumniService {
+    constructor(
+        private readonly dbClient: typeof db = db
+    ) {
+    }
     private static readonly PLUGIN_NAME = 'alumniService' as const
 
     public static alumniServicePlugin = () => new Elysia().decorate(this.PLUGIN_NAME, new AlumniService())
@@ -31,15 +36,16 @@ export class AlumniService {
         parsing.on('error', err => reject(err));
     })
 
-    public replaceAllSurveyData = async (parsedCSV: CSVValue[]) => {
-        const { db } = await import('../db');
-        const { alumniSurveyTable } = await import('../db/schemas');
-        await db.delete(alumniSurveyTable)
+    public async *replaceAllSurveyData(parsedCSV: CSVValue[]): AsyncGenerator<UploadProgress> {
+        let current = 0
+        yield {current, total: parsedCSV.length, percentage: 0, message: 'Deleting old data...', timestamp: new Date()}
+        await this.dbClient.delete(alumniSurveyTable)
+        yield {current, total: parsedCSV.length, percentage: 0, message: 'Inserting new data...', timestamp: new Date()}
         for (const csvValue of parsedCSV) {
             const {Timestamp, 'Nama Lengkap': namaLengkap, Angkatan: rawAngaktan, 'Nomor Kontak': nomorKontak, Email: email, ...formValues} = csvValue
             const timestamp = dayjs(Timestamp as string, 'DD/MM/YYYY H:mm:ss').toDate()
             const angkatan = AngkatanNames.find(agkt => rawAngaktan.toString().toLowerCase().includes(agkt.toLowerCase()))!
-            await db.insert(alumniSurveyTable).values({
+            await this.dbClient.insert(alumniSurveyTable).values({
                 timestamp,
                 namaLengkap: namaLengkap as string,
                 angkatan: angkatan,
@@ -47,8 +53,19 @@ export class AlumniService {
                 email: email as string,
                 formValues: formValues as AlumniFormValue
             }).execute()
+            current++
+            yield {current, total: parsedCSV.length, percentage: Math.round((current / parsedCSV.length) * 100), message: 'Inserting new data...', timestamp: new Date()}
         }
+        yield {current, total: parsedCSV.length, percentage: 100, message: 'Done', timestamp: new Date()}
     }
+}
+
+export type UploadProgress = {
+    current: number,
+    total: number,
+    percentage: number,
+    message: string,
+    timestamp: Date
 }
 
 export const RequiredAlumniSurveyCSVHeaders = [
