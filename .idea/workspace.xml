@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="0.6.0 fix csv upload, update docs">
+    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="0.7.0 fix login process">
+      <change afterPath="$PROJECT_DIR$/packages/backend/src/telemetry.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/drizzle/meta/_journal.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/drizzle/meta/_journal.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/src/db/schemas/alumni.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/db/schemas/alumni.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/src/db/schemas/alumniSurvey.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/db/schemas/alumniSurvey.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/src/db/schemas/role.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/db/schemas/role.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/src/db/schemas/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/db/schemas/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/src/plugins/security.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/plugins/security.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/src/services/UserService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/services/UserService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +64,9 @@
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -133,7 +135,7 @@
       <recent name="C:\Users\PC\Codespace\WebstormProjects\tawasul\packages\frontend" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.frontend &gt; dev">
+  <component name="RunManager" selected="Bun.Backend Local">
     <configuration name="Backend Local" type="BunRunConfiguration">
       <option name="program" value="src/index.ts" />
       <option name="runtimeParameters" value="--env-file=.env" />
@@ -523,7 +525,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766881066539</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="0.7.0 fix login process">
+      <option name="closed" value="true" />
+      <created>1766898012490</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1766898012490</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,7 +551,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix fetch user in every page" />
     <MESSAGE value="bump ver 0.1.1" />
     <MESSAGE value="nginx.conf" />
     <MESSAGE value="add error message on failed login" />
@@ -566,24 +575,7 @@
     <MESSAGE value="updates" />
     <MESSAGE value="0.5.0 add chart to home dashboard" />
     <MESSAGE value="0.6.0 fix csv upload, update docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.6.0 fix csv upload, update docs" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/packages/backend/src/plugins/security.ts</url>
-          <line>35</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/packages/backend/src/index.ts</url>
-          <line>168</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="0.7.0 fix login process" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.7.0 fix login process" />
   </component>
 </project>

@@ -28,3 +28,7 @@ export const IKAPIAR_CONTACT_EMAIL = process.env.IKAPIAR_CONTACT_EMAIL ?? 'conta
 
 export const FRONTEND_BASE_URL = process.env.FRONTEND_BASE_URL ?? 'http://localhost:5173'
 export const API_BASE_URL = process.env.API_BASE_URL ?? 'http://localhost:3000'
+
+// telemetry
+export const SENTRY_DSN = process.env.SENTRY_DSN
+export const SENTRY_ENVIRONMENT = process.env.SENTRY_ENVIRONMENT ?? process.env.NODE_ENV ?? 'development'

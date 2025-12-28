@@ -6,6 +6,8 @@
     "build": "bun build --compile --minify --sourcemap --bytecode --target=bun-linux-x64 ./src/index.ts --outfile tawasul-app"
   },
   "dependencies": {
+    "@elysiajs/opentelemetry": "^1.4.10",
+    "@sentry/bun": "^10.32.1",
     "csv-parse": "^6.1.0",
     "dayjs": "^1.11.19",
     "drizzle-orm": "^0.44.7",

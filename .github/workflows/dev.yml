@@ -85,7 +85,8 @@ jobs:
         echo JWT_PRIVATE_KEY_BASE64=${{ secrets.JWT_PRIVATE_KEY_BASE64 }} >> ./deploy/dev/secrets.env
         echo JWT_PUBLIC_KEY_BASE64=${{ secrets.JWT_PUBLIC_KEY_BASE64 }} >> ./deploy/dev/secrets.env
         echo FRONTEND_BASE_URL=${{ secrets.FRONTEND_BASE_URL }} >> ./deploy/dev/secrets.env
-        echo IKAPIAR_ADMIN_EMAIL=${{ secrets.IKAPIAR_ADMIN_EMAIL }} >> ./deploy/dev/secrets.env
+        echo "IKAPIAR_ADMIN_EMAIL=${{ secrets.IKAPIAR_ADMIN_EMAIL }}" >> ./deploy/dev/secrets.env
+        echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> ./deploy/dev/secrets.env
         echo APP_ENV=dev >> ./deploy/dev/secrets.env
       shell: bash
     - name: Deploy to K8s

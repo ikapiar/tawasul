@@ -22,10 +22,12 @@ import {logger} from "./logger";
 import {roleTable, userTable, userToRole} from "./db/schemas";
 import {AlumniService} from "./services/AlumniService";
 import { StatisticsService } from "./services/StatisticsService";
+import {telemetry} from "./telemetry";
 
 const prefix = '/api/v1'
 
 const api = new Elysia({prefix})
+    .use(telemetry())
     .onAfterHandle(({ set }) => {
         if (process.env['NODE_ENV'] !== 'production') {
             set.headers['Access-Control-Allow-Origin'] = 'http://localhost:5173'
