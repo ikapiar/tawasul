@@ -1,17 +1,20 @@
 import { Link } from 'wouter'
 import { Button, buttonVariants } from '@/components/ui/button'
+import { Logo } from '@/components/ui/logo'
 import { Menu, Home, LogOut, BarChart3, FileText } from 'lucide-react'
 import { useState, ReactNode } from 'react'
 import { useServices } from "@/hooks/useServices";
+import { useAuthStore } from '@/stores/authStore';
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const { authService } = useServices()
+  const { user } = useAuthStore()
   const [open, setOpen] = useState(true)
   return (
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-[240px_1fr]">
       <aside className={`${open ? 'block' : 'hidden'} md:block border-r bg-white`}>
         <div className="h-16 flex items-center gap-2 px-4 border-b">
-          <div className="h-8 w-8 bg-primary rounded-md" />
+          <Logo/>
           <span className="font-semibold">Tawasul</span>
         </div>
         <nav className="p-2 space-y-1">
@@ -32,6 +35,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             <Menu size={18} />
           </Button>
           <div className="ml-auto flex items-center gap-2">
+            <span className="hidden md:inline my-3">Hello, {user!.name}</span>
             <Link href="/login" className={buttonVariants({ variant: 'outline' })} onClick={async () => await authService.logout()}>
               <span className="inline-flex items-center gap-2"><LogOut size={16} /> Sign out</span>
             </Link>

@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="update docs">
+    <list default="true" id="a709f10a-b460-4139-9931-96c838925db1" name="Changes" comment="logger update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/src/logger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/logger.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/backend/src/telemetry.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/telemetry.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/backend/src/services/AlumniService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/backend/src/services/AlumniService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/services/stats.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/services/stats.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/frontend/src/services/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/frontend/src/services/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -559,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766899616805</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="logger update">
+      <option name="closed" value="true" />
+      <created>1766900792994</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1766900792994</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +582,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="nginx.conf" />
     <MESSAGE value="add error message on failed login" />
     <MESSAGE value="dockers" />
     <MESSAGE value="dockers, update deps" />
@@ -602,6 +606,7 @@
     <MESSAGE value="0.7.0 fix login process" />
     <MESSAGE value="0.8.0 add telemetry" />
     <MESSAGE value="update docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="update docs" />
+    <MESSAGE value="logger update" />
+    <option name="LAST_COMMIT_MESSAGE" value="logger update" />
   </component>
 </project>

@@ -14,7 +14,7 @@ export default function AuthLayout({children}: { children: ReactNode }) {
             <div
                 className="hidden lg:flex items-center justify-center bg-gradient-to-br from-primary/10 via-white to-success/10">
                 <div className="max-w-md p-10 text-center">
-                    <Logo/>
+                    <Logo className='mx-auto'/>
                     <h2 className="text-3xl font-semibold">Welcome to Tawasul</h2>
                     <p className="text-muted-foreground mt-2">Connect alumni, share stories, and explore
                         opportunities.</p>

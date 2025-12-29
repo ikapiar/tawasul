@@ -34,7 +34,7 @@ export class UserService {
                 const foundAlumniSurvey = await this.getAlumniSurveyByEmail(userData.email)
                 if (!foundAlumniSurvey) {
                     return {
-                        user: { email: '', roles: []},
+                        user: { email: '', roles: [], name: ''},
                         canLogin: false,
                         message: `Data anda (${userData.email}) tidak ditemukan dalam database alumni IKAPIAR. Harap hubungi ketua angkatan atau admin IKAPIAR (${IKAPIAR_ADMIN_EMAIL})`
                     }
@@ -43,7 +43,7 @@ export class UserService {
                 const foundAngkatan = await db.query.angkatanTable.findFirst({where: eq(angkatanTable.name, foundAlumniSurvey.angkatan)}).execute()
                 if (!foundAngkatan) {
                     return {
-                        user: { email: '', roles: []},
+                        user: { email: '', roles: [], name: ''},
                         canLogin: false,
                         message: `Data anda (${userData.email}) ditemukan dalam database alumni, namun nama angkatan invalid (${foundAlumniSurvey.angkatan}). Harap pastikan kembali data yang anda isi di survey alumni dan kontak admin ikapiar (${IKAPIAR_ADMIN_EMAIL})`
                     }
@@ -64,7 +64,7 @@ export class UserService {
                 }).returning()
                 const roles = await this.linkUserRole(userId, AlumniRole)
                 return {
-                    user: { email: foundAlumniSurvey.email, roles},
+                    user: { email: foundAlumniSurvey.email, roles, name: foundAlumniSurvey.namaLengkap},
                     canLogin: true,
                     message: 'ok'
                 }
@@ -78,7 +78,7 @@ export class UserService {
             // link user to alumni role
             const roles = await this.linkUserRole(userId, AlumniRole)
             return {
-                user: { email: foundAlumni.email, roles},
+                user: { email: foundAlumni.email, roles, name: foundAlumni.name},
                 canLogin: true,
                 message: 'ok'
             }
@@ -87,7 +87,7 @@ export class UserService {
         // if user can not log in, reject the login, tell the user status and user should reach out to admins
         if (!CanLoginUserStatuses.includes(foundUser.status as CanLoginUserStatus)) {
             return {
-                user: { email: userData.email, roles: []},
+                user: { email: userData.email, roles: [], name: ''},
                 canLogin: false,
                 message: `Akun anda ditemukan, namun dalam status ${foundUser.status}. Harap hubungi admin ikapiar ${IKAPIAR_ADMIN_EMAIL}`,
             }
@@ -100,7 +100,7 @@ export class UserService {
         )
         const roles = await Promise.all(maybeRoles).then(roles => roles.filter(role => role !== undefined).map(({name}) => name))
         return {
-            user: { email: userData.email, roles},
+            user: { email: userData.email, roles, name: foundUser.name },
             canLogin: true,
             message: 'ok'
         }
@@ -143,4 +143,5 @@ export type ProcessedLogin = {
 export type AuthorizedUser = {
     email: string,
     roles: string[],
+    name: string
 }

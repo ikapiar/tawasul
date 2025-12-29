@@ -3,6 +3,7 @@ import { Link, useLocation } from 'wouter'
 import { buttonVariants } from '@/components/ui/button'
 import {useAuthStore} from "@/stores/authStore";
 import {scrollToId} from "@/lib/utils";
+import { Logo } from '@/components/ui/logo';
 
 export default function MainLayout({ children }: { children: ReactNode }) {
   const [location] = useLocation()
@@ -12,7 +13,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
       <header className="border-b bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/50">
         <div className="container flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-md bg-primary" />
+            <Logo/>
             <span className="font-semibold">Tawasul</span>
           </Link>
           <nav className="flex items-center gap-6 text-sm">
@@ -22,8 +23,8 @@ export default function MainLayout({ children }: { children: ReactNode }) {
           <div className="flex items-center gap-2">
               {
                   isAuthenticated
-                      ? <Link href="/dashboard" className={buttonVariants({ variant: 'success' })}>Dashboard</Link>
-                      : <Link href="/login" className={buttonVariants({ variant: 'outline' })}>Sign in</Link>
+                      ? <Link href="/dashboard" className={buttonVariants({ variant: 'default' })}>Dashboard</Link>
+                      : <Link href="/login" className={buttonVariants({ variant: 'outline' })}>Alumni Portal</Link>
               }
           </div>
         </div>
