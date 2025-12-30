@@ -92,3 +92,6 @@ jobs:
       shell: bash
     - name: Deploy to K8s
       run: kubectl apply -k ./deploy/dev/
+    - name: Verify Deployment
+      run: |
+        kubectl rollout status deployment/tawasul -n tawasul-dev

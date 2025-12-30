@@ -38,9 +38,9 @@ export class AlumniService {
 
     public async *replaceAllSurveyData(parsedCSV: CSVValue[]): AsyncGenerator<UploadProgress> {
         let current = 0
-        yield {current, total: parsedCSV.length, percentage: 0, message: 'Deleting old data...', timestamp: new Date()}
+        yield {current, total: parsedCSV.length, percentage: 0, message: 'Deleting old data...'}
         await this.dbClient.delete(alumniSurveyTable)
-        yield {current, total: parsedCSV.length, percentage: 0, message: 'Inserting new data...', timestamp: new Date()}
+        yield {current, total: parsedCSV.length, percentage: 0, message: 'Inserting new data...'}
         for (const csvValue of parsedCSV) {
             const {Timestamp, 'Nama Lengkap': namaLengkap, Angkatan: rawAngaktan, 'Nomor Kontak': nomorKontak, Email: email, ...formValues} = csvValue
             const timestamp = dayjs(Timestamp as string, 'DD/MM/YYYY H:mm:ss').toDate()
@@ -54,9 +54,9 @@ export class AlumniService {
                 formValues: formValues as AlumniFormValue
             }).execute()
             current++
-            yield {current, total: parsedCSV.length, percentage: Math.round((current / parsedCSV.length) * 100), message: 'Inserting new data...', timestamp: new Date()}
+            yield {current, total: parsedCSV.length, percentage: Math.round((current / parsedCSV.length) * 100), message: 'Inserting new data...'}
         }
-        yield {current, total: parsedCSV.length, percentage: 100, message: 'Done', timestamp: new Date()}
+        yield {current, total: parsedCSV.length, percentage: 100, message: 'Done'}
     }
 }
 
@@ -64,8 +64,7 @@ export type UploadProgress = {
     current: number,
     total: number,
     percentage: number,
-    message: string,
-    timestamp: Date
+    message: string
 }
 
 export const RequiredAlumniSurveyCSVHeaders = [
